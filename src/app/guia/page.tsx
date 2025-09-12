@@ -19,7 +19,6 @@ export default function GuiaPage() {
       const pageHeight = doc.internal.pageSize.getHeight()
       let yPosition = 20
 
-<<<<<<< HEAD
       // Logo Custodia360 con C en azul
       const logoSize = 12
       const logoX = pageWidth / 2 - logoSize / 2
@@ -35,11 +34,6 @@ export default function GuiaPage() {
       // Título principal con color
       doc.setFontSize(24)
       doc.setTextColor(37, 99, 235) // Color azul Custodia360
-=======
-      // Título principal con color
-      doc.setFontSize(24)
-      doc.setTextColor(234, 88, 12) // Color naranja Custodia360
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       doc.text('CUSTODIA360', pageWidth / 2, yPosition, { align: 'center' })
 
       yPosition += 15

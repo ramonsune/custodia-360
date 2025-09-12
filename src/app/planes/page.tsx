@@ -30,38 +30,22 @@ export default function PlanesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-<<<<<<< HEAD
             <div className="text-center bg-white p-6 rounded-lg shadow-lg">
-=======
-            <div className="text-center bg-blue-50 p-6 rounded-lg">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               <h3 className="font-bold text-gray-700 mb-2">Delegado de Protección</h3>
               <p className="text-gray-600 text-sm">Designas y nosotros lo formamos</p>
             </div>
 
-<<<<<<< HEAD
             <div className="text-center bg-white p-6 rounded-lg shadow-lg">
-=======
-            <div className="text-center bg-green-50 p-6 rounded-lg">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               <h3 className="font-bold text-gray-700 mb-2">Plan de Protección</h3>
               <p className="text-gray-600 text-sm">Plan y protocolos de actuación específicos</p>
             </div>
 
-<<<<<<< HEAD
             <div className="text-center bg-white p-6 rounded-lg shadow-lg">
-=======
-            <div className="text-center bg-purple-50 p-6 rounded-lg">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               <h3 className="font-bold text-gray-700 mb-2">Formación Personal</h3>
               <p className="text-gray-600 text-sm">Formación</p>
             </div>
 
-<<<<<<< HEAD
             <div className="text-center bg-white p-6 rounded-lg shadow-lg">
-=======
-            <div className="text-center bg-orange-50 p-6 rounded-lg">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               <h3 className="font-bold text-gray-700 mb-2">Mantenimiento</h3>
               <p className="text-gray-600 text-sm">Actualizaciones automáticas y soporte continuo</p>
             </div>

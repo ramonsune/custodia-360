@@ -82,13 +82,8 @@ export default function HomePage() {
       <section className="bg-white py-12 sm:py-16 lg:py-20 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <div className="bg-white border border-gray-300 text-gray-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium inline-block mb-4 sm:mb-6">
-<<<<<<< HEAD
             <span className="hidden sm:inline"><span className="text-blue-600">Custodia360</span> primera empresa automatizada especializada en cumplimiento normativo</span>
             <span className="sm:hidden"><span className="text-blue-600">Custodia360</span> Sistema automatizado</span>
-=======
-            <span className="hidden sm:inline">Custodia360 primera empresa automatizada especializada en cumplimiento normativo</span>
-            <span className="sm:hidden">Sistema automatizado</span>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-gray-700 mb-4 sm:mb-6 leading-tight">

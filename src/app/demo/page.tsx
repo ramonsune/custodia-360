@@ -53,20 +53,13 @@ export default function DemoPage() {
                   {/* Contenido del Dashboard */}
                   <div className="p-4 bg-gray-50">
                     {/* Header */}
-<<<<<<< HEAD
                     <div className="bg-white border border-gray-300 rounded-lg p-3 mb-3">
                       <h4 className="font-bold text-sm text-gray-700">Dashboard Principal</h4>
                       <p className="text-xs text-gray-600">Hola, María García</p>
-=======
-                    <div className="bg-gray-800 text-white rounded-lg p-3 mb-3">
-                      <h4 className="font-bold text-sm">Dashboard Principal</h4>
-                      <p className="text-xs opacity-90">Hola, María García</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                     </div>
 
                     {/* Métricas */}
                     <div className="grid grid-cols-3 gap-2 mb-3">
-<<<<<<< HEAD
                       <div className="bg-white border border-gray-300 rounded p-2">
                         <p className="text-gray-800 text-xs font-bold">85%</p>
                         <p className="text-xs text-gray-600">Cumplimiento</p>
@@ -78,36 +71,23 @@ export default function DemoPage() {
                       <div className="bg-white border border-gray-300 rounded p-2">
                         <p className="text-gray-800 text-xs font-bold">12</p>
                         <p className="text-xs text-gray-600">Personal</p>
-=======
-                      <div className="bg-green-50 border border-green-200 rounded p-2">
-                        <p className="text-green-800 text-xs font-bold">85%</p>
-                        <p className="text-xs text-green-600">Cumplimiento</p>
-                      </div>
-                      <div className="bg-blue-50 border border-blue-200 rounded p-2">
-                        <p className="text-blue-800 text-xs font-bold">156</p>
-                        <p className="text-xs text-blue-600">Menores</p>
-                      </div>
-                      <div className="bg-purple-50 border border-purple-200 rounded p-2">
-                        <p className="text-purple-800 text-xs font-bold">12</p>
-                        <p className="text-xs text-purple-600">Personal</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                       </div>
                     </div>
 
                     {/* Alertas */}
-<<<<<<< HEAD
+
                     <div className="bg-white border border-gray-300 rounded p-2">
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-gray-800 font-bold text-xs">2 Alertas Pendientes</p>
                           <p className="text-gray-600 text-xs">Requieren atención</p>
-=======
+
                     <div className="bg-red-50 border border-red-200 rounded p-2">
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-red-800 font-bold text-xs">2 Alertas Pendientes</p>
                           <p className="text-red-600 text-xs">Requieren atención</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                         </div>
                         <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold animate-pulse">!</span>
                       </div>
@@ -154,73 +134,73 @@ export default function DemoPage() {
 
                     {/* Lista de casos */}
                     <div className="space-y-2">
-<<<<<<< HEAD
+
                       <div className="bg-white border border-gray-300 rounded p-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs font-bold text-gray-800">#0024 - Urgente</p>
                             <p className="text-xs text-gray-600">Bullying detectado</p>
-=======
+
                       <div className="bg-red-50 border border-red-200 rounded p-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs font-bold text-red-800">#0024 - Urgente</p>
                             <p className="text-xs text-red-600">Bullying detectado</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                           </div>
                           <span className="text-red-500 text-xs">!</span>
                         </div>
                       </div>
 
-<<<<<<< HEAD
+
                       <div className="bg-white border border-gray-300 rounded p-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs font-bold text-gray-800">#0023 - En proceso</p>
                             <p className="text-xs text-gray-600">Evaluación inicial</p>
-=======
+
                       <div className="bg-yellow-50 border border-yellow-200 rounded p-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs font-bold text-yellow-800">#0023 - En proceso</p>
                             <p className="text-xs text-yellow-600">Evaluación inicial</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                           </div>
                           <span className="text-yellow-500 text-xs">⚠</span>
                         </div>
                       </div>
 
-<<<<<<< HEAD
+
                       <div className="bg-white border border-gray-300 rounded p-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs font-bold text-gray-800">#0022 - Resuelto</p>
                             <p className="text-xs text-gray-600">Caso cerrado</p>
-=======
+
                       <div className="bg-green-50 border border-green-200 rounded p-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs font-bold text-green-800">#0022 - Resuelto</p>
                             <p className="text-xs text-green-600">Caso cerrado</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                           </div>
                           <span className="text-green-500 text-xs">✓</span>
                         </div>
                       </div>
 
-<<<<<<< HEAD
+
                       <div className="bg-white border border-gray-300 rounded p-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs font-bold text-gray-800">#0021 - Seguimiento</p>
                             <p className="text-xs text-gray-600">Revisión mensual</p>
-=======
+
                       <div className="bg-blue-50 border border-blue-200 rounded p-2">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-xs font-bold text-blue-800">#0021 - Seguimiento</p>
                             <p className="text-xs text-blue-600">Revisión mensual</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                           </div>
                           <span className="text-blue-500 text-xs">📋</span>
                         </div>
@@ -268,7 +248,7 @@ export default function DemoPage() {
 
                     {/* Grid de documentos */}
                     <div className="grid grid-cols-2 gap-2">
-<<<<<<< HEAD
+
                       <div className="bg-white border border-gray-300 rounded p-2 hover:bg-gray-50 transition-colors cursor-pointer">
                         <p className="text-xs font-bold text-gray-800">Plan Protección</p>
                         <p className="text-xs text-gray-600">PDF</p>
@@ -287,7 +267,7 @@ export default function DemoPage() {
                       <div className="bg-white border border-gray-300 rounded p-2 hover:bg-gray-50 transition-colors cursor-pointer">
                         <p className="text-xs font-bold text-gray-800">Código Conducta</p>
                         <p className="text-xs text-gray-600">PDF</p>
-=======
+
                       <div className="bg-blue-50 border border-blue-200 rounded p-2 hover:bg-blue-100 transition-colors cursor-pointer">
                         <p className="text-xs font-bold text-blue-800">Plan Protección</p>
                         <p className="text-xs text-blue-600">PDF</p>
@@ -306,16 +286,16 @@ export default function DemoPage() {
                       <div className="bg-orange-50 border border-orange-200 rounded p-2 hover:bg-orange-100 transition-colors cursor-pointer">
                         <p className="text-xs font-bold text-orange-800">Código Conducta</p>
                         <p className="text-xs text-orange-600">PDF</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                       </div>
                     </div>
 
                     {/* Botón de descarga */}
-<<<<<<< HEAD
+
                     <button className="mt-3 w-full bg-blue-600 text-white text-xs font-bold py-2 rounded hover:bg-blue-700 transition-colors">
-=======
+
                     <button className="mt-3 w-full bg-purple-600 text-white text-xs font-bold py-2 rounded hover:bg-purple-700 transition-colors">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                       Descargar Todo
                     </button>
                   </div>
@@ -352,24 +332,24 @@ export default function DemoPage() {
           <div className="bg-gray-100 rounded-xl p-8 mb-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               {/* Header del Dashboard */}
-<<<<<<< HEAD
+
               <div className="bg-white text-black p-6 border-b border-gray-200">
-=======
+
               <div className="bg-gray-800 text-white p-6">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                 <div className="flex justify-between items-center">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
                       <span className="text-white text-xl font-bold">C</span>
                     </div>
                     <div>
-<<<<<<< HEAD
+
                       <h3 className="text-xl font-bold text-black">Club Deportivo Ejemplo</h3>
                       <p className="text-gray-600 text-sm">Juan García Rodríguez (Delegado de Protección)</p>
-=======
+
                       <h3 className="text-xl font-bold">Club Deportivo Ejemplo</h3>
                       <p className="text-gray-300 text-sm">Juan García Rodríguez (Delegado de Protección)</p>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                     </div>
                   </div>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -381,7 +361,7 @@ export default function DemoPage() {
               {/* Estadísticas principales */}
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-<<<<<<< HEAD
+
                   <div className="bg-white border border-gray-300 rounded-lg p-4 text-center">
                     <h4 className="text-gray-700 font-bold text-sm mb-1">Personal Formado</h4>
                     <div className="text-3xl font-bold text-gray-900">87%</div>
@@ -411,7 +391,7 @@ export default function DemoPage() {
 
                   <div className="bg-white border border-gray-300 rounded-lg p-4 text-center">
                     <h4 className="text-gray-700 font-bold text-sm mb-1">Casos Activos</h4>
-=======
+
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
                     <h4 className="text-blue-600 font-bold text-sm mb-1">Personal Formado</h4>
                     <div className="text-3xl font-bold text-gray-900">87%</div>
@@ -441,7 +421,7 @@ export default function DemoPage() {
 
                   <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
                     <h4 className="text-red-600 font-bold text-sm mb-1">Casos Activos</h4>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                     <div className="text-3xl font-bold text-gray-900">1</div>
                     <p className="text-gray-600 text-sm">3 resueltos este año</p>
                   </div>
@@ -455,15 +435,15 @@ export default function DemoPage() {
                   <div className="mb-6">
                     <button
                       onClick={() => setShowEmergencyModal(true)}
-<<<<<<< HEAD
+
                       className="w-full bg-white border border-gray-300 hover:bg-gray-50 text-red-600 px-6 py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 shadow-lg transition-colors"
                     >
                       <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
-=======
+
                       className="w-full bg-red-600 hover:bg-red-700 text-white px-6 py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 shadow-lg transition-colors"
                     >
                       <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                         <span className="text-red-600 text-xl font-bold">!</span>
                       </div>
                       CASO DE EMERGENCIA
@@ -471,7 +451,7 @@ export default function DemoPage() {
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-<<<<<<< HEAD
+
                     <button className="bg-white border border-gray-300 text-red-600 p-3 rounded-lg font-medium hover:bg-gray-50 transition-colors text-sm">
                       Informe Inspección
                     </button>
@@ -482,7 +462,7 @@ export default function DemoPage() {
                       <div className="font-medium text-gray-900">Comunicaciones</div>
                     </button>
                     <button className="bg-white border border-gray-300 hover:bg-gray-50 p-3 rounded-lg transition-colors text-sm">
-=======
+
                     <button className="bg-red-600 text-white p-3 rounded-lg font-medium hover:bg-red-700 transition-colors text-sm">
                       Informe Inspección
                     </button>
@@ -493,7 +473,7 @@ export default function DemoPage() {
                       <div className="font-medium text-gray-900">Comunicaciones</div>
                     </button>
                     <button className="bg-orange-50 hover:bg-orange-100 p-3 rounded-lg transition-colors text-sm">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                       <div className="font-medium text-gray-900">Gestión Casos</div>
                     </button>
                   </div>
@@ -504,17 +484,17 @@ export default function DemoPage() {
                   <div>
                     <h4 className="text-lg font-bold text-gray-900 mb-3">Alertas Pendientes</h4>
                     <div className="space-y-2">
-<<<<<<< HEAD
+
                       <div className="bg-white border border-gray-300 p-3 text-sm">
                         • Certificación de María López caduca en 15 días
                       </div>
                       <div className="bg-white border border-gray-300 p-3 text-sm">
-=======
+
                       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 text-sm">
                         • Certificación de María López caduca en 15 días
                       </div>
                       <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 text-sm">
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                         • 4 familias pendientes de firmar código de conducta
                       </div>
                     </div>
@@ -522,7 +502,7 @@ export default function DemoPage() {
 
                   <div>
                     <h4 className="text-lg font-bold text-gray-900 mb-3">Estado General</h4>
-<<<<<<< HEAD
+
                     <div className="bg-white border border-gray-300 p-4 rounded-lg">
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-sm text-gray-600">Cumplimiento Global</span>
@@ -530,7 +510,7 @@ export default function DemoPage() {
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-3">
                         <div className="bg-gray-600 h-3 rounded-full" style={{width: '87%'}}></div>
-=======
+
                     <div className="bg-orange-50 p-4 rounded-lg">
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-sm text-gray-600">Cumplimiento Global</span>
@@ -538,7 +518,7 @@ export default function DemoPage() {
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-3">
                         <div className="bg-orange-600 h-3 rounded-full" style={{width: '87%'}}></div>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
                       </div>
                       <p className="text-xs text-gray-600 mt-2">12 documentos pendientes</p>
                     </div>
@@ -710,11 +690,11 @@ export default function DemoPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-<<<<<<< HEAD
+
               <div className="text-5xl font-bold text-black mb-6">1</div>
-=======
+
               <div className="text-5xl font-bold text-blue-600 mb-6">1</div>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
               <h3 className="text-xl font-bold text-gray-900 mb-4">Configuración Inteligente</h3>
               <p className="text-gray-600">
                 Generamos automáticamente toda la documentación, protocolos y configuración para tu entidad.
@@ -722,11 +702,11 @@ export default function DemoPage() {
             </div>
 
             <div className="text-center">
-<<<<<<< HEAD
+
               <div className="text-5xl font-bold text-black mb-6">2</div>
-=======
+
               <div className="text-5xl font-bold text-green-600 mb-6">2</div>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
               <h3 className="text-xl font-bold text-gray-900 mb-4">Activación Inmediata</h3>
               <p className="text-gray-600">
                 Activamos el sistema completo y proporcionamos acceso inmediato al dashboard del delegado.
@@ -734,11 +714,11 @@ export default function DemoPage() {
             </div>
 
             <div className="text-center">
-<<<<<<< HEAD
+
               <div className="text-5xl font-bold text-black mb-6">3</div>
-=======
+
               <div className="text-5xl font-bold text-orange-600 mb-6">3</div>
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
+
               <h3 className="text-xl font-bold text-gray-900 mb-4">Funcionamiento 24/7</h3>
               <p className="text-gray-600">
                 Tu entidad queda implementada con mantenimiento automático y actualizaciones continuas.
