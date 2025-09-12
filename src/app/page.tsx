@@ -758,37 +758,37 @@ export default function HomePage() {
 
                     {/* Lista de módulos */}
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
                         <div className="flex items-center">
-                          <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">✓</div>
+                          <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">✓</div>
                           <div>
                             <p className="text-sm font-bold text-gray-700">Módulo 1: Introducción LOPIVI</p>
                             <p className="text-xs text-gray-500">60 min - Completado</p>
                           </div>
                         </div>
-                        <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">100%</span>
+                        <span className="bg-gray-600 text-white text-xs px-2 py-1 rounded">100%</span>
                       </div>
 
-                      <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
                         <div className="flex items-center">
-                          <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">✓</div>
+                          <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">✓</div>
                           <div>
                             <p className="text-sm font-bold text-gray-700">Módulo 2: Rol del Delegado</p>
                             <p className="text-xs text-gray-500">60 min - Completado</p>
                           </div>
                         </div>
-                        <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">100%</span>
+                        <span className="bg-gray-600 text-white text-xs px-2 py-1 rounded">100%</span>
                       </div>
 
-                      <div className="flex items-center justify-between p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                      <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
                         <div className="flex items-center">
-                          <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">3</div>
+                          <div className="w-8 h-8 bg-gray-500 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">3</div>
                           <div>
                             <p className="text-sm font-bold text-gray-700">Módulo 3: Protocolos de Actuación</p>
                             <p className="text-xs text-gray-500">90 min - En progreso</p>
                           </div>
                         </div>
-                        <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">75%</span>
+                        <span className="bg-gray-500 text-white text-xs px-2 py-1 rounded">75%</span>
                       </div>
 
                       <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg opacity-75">
@@ -907,10 +907,10 @@ export default function HomePage() {
                         <span className="text-red-600">CASO DE EMERGENCIA</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <button className="bg-blue-100 text-blue-800 p-2 rounded text-xs font-medium">
+                        <button className="bg-gray-100 text-gray-800 p-2 rounded text-xs font-medium">
                           Gestionar Casos
                         </button>
-                        <button className="bg-green-100 text-green-800 p-2 rounded text-xs font-medium">
+                        <button className="bg-gray-100 text-gray-800 p-2 rounded text-xs font-medium">
                           Ver Documentos
                         </button>
                       </div>
@@ -1115,7 +1115,7 @@ export default function HomePage() {
                         </div>
                       </div>
                       <div className="mt-3 space-y-2">
-                        <div className="h-8 bg-orange-500 rounded flex items-center justify-center">
+                        <div className="h-8 bg-gray-600 rounded flex items-center justify-center">
                           <span className="text-white text-xs font-bold">Plan de Protección</span>
                         </div>
                       </div>
@@ -1183,111 +1183,111 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Delegado de Protección */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-8">
+            <div className="bg-white border border-gray-300 rounded-xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-700 mb-4">Delegado de Protección</h3>
               <p className="text-gray-600 mb-6">
                 Designación del delegado según normativa LOPIVI.
               </p>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Formación</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Certificación</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Actualizaciones normativas continuas</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Soporte técnico</span>
                 </li>
               </ul>
             </div>
 
             {/* Plan de Protección */}
-            <div className="bg-green-50 border border-green-200 rounded-xl p-8">
+            <div className="bg-white border border-gray-300 rounded-xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-700 mb-4">Plan de Protección</h3>
               <p className="text-gray-600 mb-6">
                 Desarrollo del plan de protección para tu entidad.
               </p>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Plan por entidad</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Protocolos de actuación específicos</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Código de conducta profesional</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Documentación completa LOPIVI</span>
                 </li>
               </ul>
             </div>
 
             {/* Formación Personal */}
-            <div className="bg-purple-50 border border-purple-200 rounded-xl p-8">
+            <div className="bg-white border border-gray-300 rounded-xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-700 mb-4">Formación Personal</h3>
               <p className="text-gray-600 mb-6">
                 Formación del personal que trabaja con menores.
               </p>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Formación online</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Certificados</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Material didáctico incluido</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Seguimiento y recordatorios</span>
                 </li>
               </ul>
             </div>
 
             {/* Sistema de Gestión */}
-            <div className="bg-orange-50 border border-orange-200 rounded-xl p-8">
+            <div className="bg-white border border-gray-300 rounded-xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-700 mb-4">Sistema de Gestión</h3>
               <p className="text-gray-600 mb-6">
                 Plataforma digital completa para gestionar todo el cumplimiento LOPIVI.
               </p>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Dashboard completo del delegado</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Protocolo para la gestión de casos y incidentes</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Informes automáticos</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-orange-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Acceso 24/7 desde cualquier lugar</span>
                 </li>
               </ul>
             </div>
 
             {/* Comunicación Familias */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-8">
+            <div className="bg-white border border-gray-300 rounded-xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-700 mb-4">Comunicación Familias</h3>
               <p className="text-gray-600 mb-6">
                 Sistema completo de comunicación e información para las familias.
@@ -1313,26 +1313,26 @@ export default function HomePage() {
             </div>
 
             {/* Mantenimiento */}
-            <div className="bg-red-50 border border-red-200 rounded-xl p-8">
+            <div className="bg-white border border-gray-300 rounded-xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-700 mb-4">Mantenimiento Continuo</h3>
               <p className="text-gray-600 mb-6">
                 Mantenimiento y actualizaciones automáticas para garantizar el cumplimiento.
               </p>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Actualizaciones normativas automáticas</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Renovación de documentación</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Soporte técnico</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-600 mr-2">✓</span>
+                  <span className="text-gray-600 mr-2">✓</span>
                   <span>Monitoreo continuo del cumplimiento</span>
                 </li>
               </ul>

@@ -548,7 +548,7 @@ export default function DemoPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-5xl font-bold text-blue-600 mb-6">1</div>
+              <div className="text-5xl font-bold text-black mb-6">1</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Configuración Inteligente</h3>
               <p className="text-gray-600">
                 Generamos automáticamente toda la documentación, protocolos y configuración para tu entidad.
@@ -556,7 +556,7 @@ export default function DemoPage() {
             </div>
 
             <div className="text-center">
-              <div className="text-5xl font-bold text-green-600 mb-6">2</div>
+              <div className="text-5xl font-bold text-black mb-6">2</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Activación Inmediata</h3>
               <p className="text-gray-600">
                 Activamos el sistema completo y proporcionamos acceso inmediato al dashboard del delegado.
@@ -564,7 +564,7 @@ export default function DemoPage() {
             </div>
 
             <div className="text-center">
-              <div className="text-5xl font-bold text-orange-600 mb-6">3</div>
+              <div className="text-5xl font-bold text-black mb-6">3</div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Funcionamiento 24/7</h3>
               <p className="text-gray-600">
                 Tu entidad queda implementada con mantenimiento automático y actualizaciones continuas.
