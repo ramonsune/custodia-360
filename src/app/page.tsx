@@ -467,7 +467,7 @@ export default function HomePage() {
                           </div>
                         </div>
                         <div className="bg-white border border-gray-300 rounded p-2">
-                          <div className="h-2 bg-green-600 rounded"></div>
+                          <div className="h-2 bg-gray-600 rounded"></div>
                         </div>
                       </div>
                     </div>
@@ -501,10 +501,10 @@ export default function HomePage() {
                           </div>
                         </div>
                         <div className="grid grid-cols-4 gap-1">
-                          <div className="h-8 bg-orange-500 rounded"></div>
-                          <div className="h-6 bg-blue-400 rounded"></div>
-                          <div className="h-10 bg-purple-600 rounded"></div>
-                          <div className="h-7 bg-green-500 rounded"></div>
+                          <div className="h-8 bg-gray-400 rounded"></div>
+                          <div className="h-6 bg-gray-500 rounded"></div>
+                          <div className="h-10 bg-gray-600 rounded"></div>
+                          <div className="h-7 bg-gray-500 rounded"></div>
                         </div>
                       </div>
                     </div>
