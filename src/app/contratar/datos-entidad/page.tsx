@@ -15,9 +15,9 @@ function DatosEntidadContent() {
     if (plan && descripcion) {
       // Mapear plan a número de menores
       const planToMenores = {
-        'plan-50': '1-50',
-        'plan-200': '51-200',
-        'plan-500': '201-500',
+        'plan-100': '1-101',
+        'plan-250': '102-250',
+        'plan-500': '251-500',
         'plan-500plus': '501+',
         'custodia-temporal': 'temporal',
         'kit-comunicacion': 'kit'
@@ -87,6 +87,21 @@ function DatosEntidadContent() {
                     <option value="centro-ocio">Centro de Ocio</option>
                     <option value="guarderia">Guardería</option>
                     <option value="centro-educativo">Centro Educativo</option>
+                    <option value="centro-religioso">Centro Religioso</option>
+                    <option value="parroquia">Parroquia</option>
+                    <option value="colegio-concertado">Colegio Concertado</option>
+                    <option value="colegio-privado">Colegio Privado</option>
+                    <option value="escuela-infantil">Escuela Infantil</option>
+                    <option value="ludoteca">Ludoteca</option>
+                    <option value="asociacion-juvenil">Asociación Juvenil</option>
+                    <option value="ong">ONG/Fundación</option>
+                    <option value="scout">Grupo Scout</option>
+                    <option value="centro-terapeutico">Centro Terapéutico</option>
+                    <option value="academia-musica">Academia de Música</option>
+                    <option value="academia-danza">Academia de Danza</option>
+                    <option value="centro-formacion">Centro de Formación</option>
+                    <option value="club-ajedrez">Club de Ajedrez</option>
+                    <option value="federacion">Federación Deportiva</option>
                     <option value="otro">Otro</option>
                   </select>
                 </div>
@@ -101,11 +116,11 @@ function DatosEntidadContent() {
                     defaultValue={planPreseleccionado}
                   >
                     <option value="">Seleccionar rango</option>
-                    <option value="1-50">1-50 menores (Plan 50 - 19€)</option>
-                    <option value="51-200">51-200 menores (Plan 200 - 49€)</option>
-                    <option value="201-500">201-500 menores (Plan 500 - 105€)</option>
+                    <option value="1-101">1-101 menores (Plan 100 - 19€)</option>
+                    <option value="102-250">102-250 menores (Plan 250 - 49€)</option>
+                    <option value="251-500">251-500 menores (Plan 500 - 105€)</option>
                     <option value="501+">+501 menores (Plan 500+ - 250€)</option>
-                    <option value="temporal">Evento temporal (Custodia Temporal - 39€)</option>
+                    <option value="temporal">Evento temporal (Custodia Temporal - 100€)</option>
                     <option value="kit">Solo material (Kit Comunicación - 30€)</option>
                   </select>
                 </div>
@@ -189,6 +204,7 @@ function DatosEntidadContent() {
                     <option value="Presidente">Presidente</option>
                     <option value="Director">Director</option>
                     <option value="Gerente">Gerente</option>
+                    <option value="Propietario">Propietario</option>
                   </select>
                 </div>
 

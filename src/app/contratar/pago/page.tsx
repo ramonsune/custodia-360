@@ -10,7 +10,7 @@ export default function PagoPage() {
     fechaExpiracion: '',
     cvv: '',
     tipoTarjeta: '',
-    emailFacturacion: '',
+
     direccionFacturacion: '',
     ciudadFacturacion: '',
     codigoPostalFacturacion: '',
@@ -39,17 +39,11 @@ export default function PagoPage() {
 
     // Si no hay datos en localStorage, usar valores por defecto para mostrar cálculo
     const planes = {
-      '1-50': { nombre: 'Plan 50', precio: 19, descripcion: '1-50 menores' },
-      '51-200': { nombre: 'Plan 200', precio: 49, descripcion: '51-200 menores' },
-<<<<<<< HEAD
+      '1-101': { nombre: 'Plan 100', precio: 19, descripcion: '1-101 menores' },
+      '102-250': { nombre: 'Plan 250', precio: 49, descripcion: '102-250 menores' },
       '251-500': { nombre: 'Plan 500', precio: 105, descripcion: '251-500 menores' },
       '501+': { nombre: 'Plan 500+', precio: 250, descripcion: '+501 menores' },
       'temporal': { nombre: 'Custodia Temporal', precio: 100, descripcion: 'Hasta 60 días' },
-=======
-      '201-500': { nombre: 'Plan 500', precio: 105, descripcion: '201-500 menores' },
-      '501+': { nombre: 'Plan 500+', precio: 250, descripcion: '+501 menores' },
-      'temporal': { nombre: 'Custodia Temporal', precio: 39, descripcion: 'Hasta 60 días' },
->>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       'kit': { nombre: 'Kit Comunicación', precio: 30, descripcion: 'Material LOPIVI' }
     }
 
@@ -57,8 +51,8 @@ export default function PagoPage() {
       const parsedEntidad = JSON.parse(entidad)
       setPlanSeleccionado(planes[parsedEntidad.numeroMenores as keyof typeof planes])
     } else {
-      // Si no hay datos, usar Plan 200 por defecto para mostrar cálculo
-      setPlanSeleccionado(planes['51-200'])
+      // Si no hay datos, usar Plan 250 por defecto para mostrar cálculo
+      setPlanSeleccionado(planes['102-250'])
     }
 
     if (delegado) {
@@ -492,24 +486,13 @@ Por favor, inténtelo de nuevo o contacte con soporte.`)
 
               {/* Dirección de Facturación */}
               <div className="mb-8">
-                <h3 className="text-lg font-bold text-gray-700 mb-6 border-b pb-2">Datos de Facturación</h3>
+                <h3 className="text-lg font-bold text-gray-700 mb-6 border-b pb-2">Dirección de Facturación</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Las facturas se enviarán al email administrativo proporcionado en el paso 1.
+                </p>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email para Envío de Factura *
-                    </label>
-                    <input
-                      type="email"
-                      name="emailFacturacion"
-                      value={formData.emailFacturacion || ''}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
-                      placeholder="admin@ejemplo.com"
-                      required
-                    />
-                    <p className="text-xs text-gray-500 mt-1">La factura se enviará a este email inmediatamente tras el pago</p>
-                  </div>
+
 
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
