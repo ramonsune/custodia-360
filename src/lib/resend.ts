@@ -3,15 +3,26 @@ import { Resend } from 'resend'
 // Configuración de Resend
 export const resend = new Resend(process.env.RESEND_API_KEY)
 
+<<<<<<< HEAD
 export const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'info@custodia360.es'
+=======
+export const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
 
 // Templates de email
 export const emailTemplates = {
   contacto: {
+<<<<<<< HEAD
     subject: 'Nuevo contacto desde Custodia360',
     toAdmin: ({ nombre, email, telefono, empresa, mensaje }: any) => `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #ea580c;">Nuevo contacto desde Custodia360</h2>
+=======
+    subject: '🔔 Nuevo contacto desde Custodia360',
+    toAdmin: ({ nombre, email, telefono, empresa, mensaje }: any) => `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #ea580c;">🔔 Nuevo contacto desde Custodia360</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
 
         <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3 style="margin-top: 0;">Datos del contacto:</h3>
@@ -27,13 +38,21 @@ export const emailTemplates = {
         </div>
 
         <div style="background: #ecfdf5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+<<<<<<< HEAD
           <p style="margin: 0;"><strong>Acción recomendada:</strong> Responder en las próximas 2 horas para maximizar conversión.</p>
+=======
+          <p style="margin: 0;"><strong>⚡ Acción recomendada:</strong> Responder en las próximas 2 horas para maximizar conversión.</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         </div>
       </div>
     `,
     toUser: ({ nombre, mensaje }: any) => `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+<<<<<<< HEAD
         <h2 style="color: #ea580c;">Gracias por contactar con Custodia360</h2>
+=======
+        <h2 style="color: #ea580c;">¡Gracias por contactar con Custodia360!</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
 
         <p>Hola <strong>${nombre}</strong>,</p>
 
@@ -46,9 +65,15 @@ export const emailTemplates = {
 
         <p>Mientras tanto, puedes:</p>
         <ul>
+<<<<<<< HEAD
           <li><a href="https://custodia360.es/planes">Ver nuestros planes</a></li>
           <li><a href="https://custodia360.es/guia">Leer la guía LOPIVI</a></li>
           <li>Llamarnos al <strong>678 771 198</strong> para consultas urgentes</li>
+=======
+          <li>📋 <a href="https://custodia360.es/planes">Ver nuestros planes</a></li>
+          <li>📖 <a href="https://custodia360.es/guia">Leer la guía LOPIVI</a></li>
+          <li>💬 Llamarnos al <strong>XXX XXX XXX</strong> para consultas urgentes</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         </ul>
 
         <div style="background: #fef2f2; padding: 15px; border-radius: 8px; margin: 20px 0;">
@@ -66,10 +91,17 @@ export const emailTemplates = {
   },
 
   contratacion: {
+<<<<<<< HEAD
     subject: 'Bienvenido a Custodia360 - Tu implementación LOPIVI ha comenzado',
     toAdmin: (data: any) => `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #ea580c;">Nueva contratación Custodia360</h2>
+=======
+    subject: '🎉 ¡Bienvenido a Custodia360! Tu implementación LOPIVI ha comenzado',
+    toAdmin: (data: any) => `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #ea580c;">🎉 Nueva contratación Custodia360</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
 
         <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3>Datos de la entidad:</h3>
@@ -88,7 +120,11 @@ export const emailTemplates = {
         </div>
 
         <div style="background: #ecfdf5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+<<<<<<< HEAD
           <p style="margin: 0;"><strong>Próximos pasos:</strong></p>
+=======
+          <p style="margin: 0;"><strong>⚡ Próximos pasos:</strong></p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
           <ol>
             <li>Configurar acceso del delegado (2h)</li>
             <li>Enviar materiales de formación (24h)</li>
@@ -99,6 +135,7 @@ export const emailTemplates = {
     `,
     toUser: (data: any) => `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+<<<<<<< HEAD
         <h2 style="color: #ea580c;">Bienvenido a Custodia360</h2>
 
         <p>Hola <strong>${data.nombreContratante}</strong>,</p>
@@ -107,6 +144,16 @@ export const emailTemplates = {
 
         <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3>Resumen de tu contratación:</h3>
+=======
+        <h2 style="color: #ea580c;">🎉 ¡Bienvenido a Custodia360!</h2>
+
+        <p>Hola <strong>${data.nombreContratante}</strong>,</p>
+
+        <p>¡Felicidades! Tu entidad <strong>${data.entidad}</strong> acaba de dar el paso más importante para proteger a los menores.</p>
+
+        <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h3>📋 Resumen de tu contratación:</h3>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
           <p><strong>Plan:</strong> ${data.plan}</p>
           <p><strong>Precio:</strong> ${data.precio}€ + IVA</p>
           <p><strong>Delegado principal:</strong> ${data.nombreDelegado}</p>
@@ -114,7 +161,11 @@ export const emailTemplates = {
         </div>
 
         <div style="background: #ecfdf5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+<<<<<<< HEAD
           <h3>Qué sucede ahora:</h3>
+=======
+          <h3>✅ Qué sucede ahora:</h3>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
           <ol>
             <li><strong>Próximas 2 horas:</strong> Configuración automática del sistema</li>
             <li><strong>24 horas:</strong> Tu delegado recibirá los materiales de formación</li>
@@ -123,14 +174,22 @@ export const emailTemplates = {
         </div>
 
         <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin: 20px 0;">
+<<<<<<< HEAD
           <p style="margin: 0;"><strong>Acceso temporal:</strong> Usa estas credenciales para hacer seguimiento:</p>
+=======
+          <p style="margin: 0;"><strong>🔗 Acceso temporal:</strong> Usa estas credenciales para hacer seguimiento:</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
           <p><strong>Email:</strong> ${data.emailContratante}<br>
           <strong>Contraseña:</strong> La que elegiste en el formulario</p>
         </div>
 
         <p>Un saludo,<br>
         <strong>Equipo Custodia360</strong><br>
+<<<<<<< HEAD
         Tu entidad ya está protegida</p>
+=======
+        🛡️ Tu entidad ya está protegida</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </div>
     `
   }

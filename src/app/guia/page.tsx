@@ -19,6 +19,7 @@ export default function GuiaPage() {
       const pageHeight = doc.internal.pageSize.getHeight()
       let yPosition = 20
 
+<<<<<<< HEAD
       // Logo Custodia360 con C en azul
       const logoSize = 12
       const logoX = pageWidth / 2 - logoSize / 2
@@ -34,6 +35,11 @@ export default function GuiaPage() {
       // Título principal con color
       doc.setFontSize(24)
       doc.setTextColor(37, 99, 235) // Color azul Custodia360
+=======
+      // Título principal con color
+      doc.setFontSize(24)
+      doc.setTextColor(234, 88, 12) // Color naranja Custodia360
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       doc.text('CUSTODIA360', pageWidth / 2, yPosition, { align: 'center' })
 
       yPosition += 15
@@ -44,18 +50,30 @@ export default function GuiaPage() {
       yPosition += 10
       doc.setFontSize(12)
       doc.setTextColor(100, 100, 100)
+<<<<<<< HEAD
       doc.text('Manual Técnico Completo - 35 Páginas', pageWidth / 2, yPosition, { align: 'center' })
 
       // Línea separadora
       yPosition += 10
       doc.setDrawColor(37, 99, 235)
+=======
+      doc.text('Manual Técnico Completo - 47 Páginas', pageWidth / 2, yPosition, { align: 'center' })
+
+      // Línea separadora
+      yPosition += 10
+      doc.setDrawColor(234, 88, 12)
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       doc.setLineWidth(0.5)
       doc.line(20, yPosition, pageWidth - 20, yPosition)
 
       // Contenido principal
       yPosition += 15
       doc.setFontSize(16)
+<<<<<<< HEAD
       doc.setTextColor(37, 99, 235)
+=======
+      doc.setTextColor(234, 88, 12)
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       doc.text('¿Por qué esta guía es tan compleja?', 20, yPosition)
 
       yPosition += 10
@@ -138,13 +156,22 @@ export default function GuiaPage() {
       const lineasResumen = doc.splitTextToSize(resumen, pageWidth - 40)
       doc.text(lineasResumen, 20, yPosition)
 
+<<<<<<< HEAD
       // Agregar más páginas con contenido detallado para llegar a 35 páginas
       for (let i = 2; i <= 32; i++) {
+=======
+      // Agregar más páginas con contenido detallado
+      for (let i = 2; i <= 5; i++) {
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         doc.addPage()
         yPosition = 20
 
         doc.setFontSize(16)
+<<<<<<< HEAD
         doc.setTextColor(37, 99, 235)
+=======
+        doc.setTextColor(234, 88, 12)
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         doc.text(`Sección ${i}: Detalles Técnicos`, 20, yPosition)
 
         yPosition += 10
@@ -180,7 +207,11 @@ export default function GuiaPage() {
       yPosition = pageHeight / 2 - 30
 
       doc.setFontSize(18)
+<<<<<<< HEAD
       doc.setTextColor(37, 99, 235)
+=======
+      doc.setTextColor(234, 88, 12)
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       doc.text('¿Listo para proteger tu entidad?', pageWidth / 2, yPosition, { align: 'center' })
 
       yPosition += 10
@@ -210,6 +241,7 @@ export default function GuiaPage() {
       const pageHeight = doc.internal.pageSize.getHeight()
       let yPosition = 20
 
+<<<<<<< HEAD
       // Logo Custodia360 con C en azul
       const logoSize = 12
       const logoX = pageWidth / 2 - logoSize / 2
@@ -222,6 +254,8 @@ export default function GuiaPage() {
 
       yPosition += 15
 
+=======
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       // Título principal con color
       doc.setFontSize(24)
       doc.setTextColor(37, 99, 235) // Color azul
@@ -235,7 +269,11 @@ export default function GuiaPage() {
       yPosition += 10
       doc.setFontSize(12)
       doc.setTextColor(100, 100, 100)
+<<<<<<< HEAD
       doc.text('Manual Especializado Completo - 39 Páginas', pageWidth / 2, yPosition, { align: 'center' })
+=======
+      doc.text('Manual Especializado Completo - 62 Páginas', pageWidth / 2, yPosition, { align: 'center' })
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
 
       // Línea separadora
       yPosition += 10
@@ -331,8 +369,13 @@ export default function GuiaPage() {
         yPosition += 7
       })
 
+<<<<<<< HEAD
       // Agregar más páginas para llegar a 39 páginas
       for (let i = 2; i <= 36; i++) {
+=======
+      // Agregar más páginas
+      for (let i = 2; i <= 8; i++) {
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         doc.addPage()
         yPosition = 20
 
@@ -428,7 +471,11 @@ export default function GuiaPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-700 mb-2">Guía de Implementación LOPIVI</h3>
+<<<<<<< HEAD
               <p className="text-gray-600 mb-6">Manual completo de 35 páginas</p>
+=======
+              <p className="text-gray-600 mb-6">Manual completo de 47 páginas</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               <button
                 onClick={() => (window as any).generateLopiviPDF?.()}
                 className="w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-blue-800 transition-colors"
@@ -445,7 +492,11 @@ export default function GuiaPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-700 mb-2">Guía Plan de Protección</h3>
+<<<<<<< HEAD
               <p className="text-gray-600 mb-6">Manual completo de 39 páginas</p>
+=======
+              <p className="text-gray-600 mb-6">Manual completo de 62 páginas</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               <button
                 onClick={() => (window as any).generateProtectionPlanPDF?.()}
                 className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
@@ -468,8 +519,13 @@ export default function GuiaPage() {
 
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             {/* Paso 1 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 text-center shadow-lg">
               <div className="text-3xl font-bold text-gray-700 mb-4">
+=======
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-4">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 1
               </div>
               <h3 className="text-lg font-bold text-gray-700 mb-3">Contrata el Servicio</h3>
@@ -480,8 +536,13 @@ export default function GuiaPage() {
             </div>
 
             {/* Paso 2 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 text-center shadow-lg">
               <div className="text-3xl font-bold text-gray-700 mb-4">
+=======
+            <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
+              <div className="text-3xl font-bold text-green-600 mb-4">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 2
               </div>
               <h3 className="text-lg font-bold text-gray-700 mb-3">Designa el Delegado</h3>
@@ -490,20 +551,34 @@ export default function GuiaPage() {
             </div>
 
             {/* Paso 3 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 text-center shadow-lg">
               <div className="text-3xl font-bold text-gray-700 mb-4">
                 3
               </div>
               <h3 className="text-lg font-bold text-gray-700 mb-3">Certifica el Delegado</h3>
               <p className="text-gray-600 text-sm mb-4">El delegado completa la formación</p>
+=======
+            <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 text-center">
+              <div className="text-3xl font-bold text-purple-600 mb-4">
+                3
+              </div>
+              <h3 className="text-lg font-bold text-gray-700 mb-3">Certifica el Delegado</h3>
+              <p className="text-gray-600 text-sm mb-4">El delegado completa la formación especializada</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               <Link href="/formacion-delegado" className="text-purple-600 font-bold hover:underline">
                 Ver Formación →
               </Link>
             </div>
 
             {/* Paso 4 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 text-center shadow-lg">
               <div className="text-3xl font-bold text-gray-700 mb-4">
+=======
+            <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 text-center">
+              <div className="text-3xl font-bold text-orange-600 mb-4">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 4
               </div>
               <h3 className="text-lg font-bold text-gray-700 mb-3">Accede al Dashboard</h3>

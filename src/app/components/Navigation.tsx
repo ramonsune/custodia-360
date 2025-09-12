@@ -23,7 +23,13 @@ export default function Navigation() {
             <Link href="/" className="text-gray-700 hover:text-blue-800 font-medium transition-colors">
               Inicio
             </Link>
+<<<<<<< HEAD
 
+=======
+            <Link href="/servicios" className="text-gray-700 hover:text-blue-800 font-medium transition-colors">
+              Servicios
+            </Link>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
             <Link href="/planes" className="text-gray-700 hover:text-blue-800 font-medium transition-colors">
               Planes
             </Link>
@@ -78,7 +84,17 @@ export default function Navigation() {
               >
                 Inicio
               </Link>
+<<<<<<< HEAD
 
+=======
+              <Link
+                href="/servicios"
+                className="text-gray-700 hover:text-blue-800 font-medium transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Servicios
+              </Link>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               <Link
                 href="/planes"
                 className="text-gray-700 hover:text-blue-800 font-medium transition-colors py-2"

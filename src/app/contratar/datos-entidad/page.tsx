@@ -17,7 +17,11 @@ function DatosEntidadContent() {
       const planToMenores = {
         'plan-50': '1-50',
         'plan-200': '51-200',
+<<<<<<< HEAD
         'plan-500': '251-500',
+=======
+        'plan-500': '201-500',
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         'plan-500plus': '501+',
         'custodia-temporal': 'temporal',
         'kit-comunicacion': 'kit'

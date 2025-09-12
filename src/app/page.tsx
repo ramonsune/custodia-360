@@ -82,8 +82,13 @@ export default function HomePage() {
       <section className="bg-white py-12 sm:py-16 lg:py-20 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <div className="bg-white border border-gray-300 text-gray-800 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium inline-block mb-4 sm:mb-6">
+<<<<<<< HEAD
             <span className="hidden sm:inline"><span className="text-blue-600">Custodia360</span> primera empresa automatizada especializada en cumplimiento normativo</span>
             <span className="sm:hidden"><span className="text-blue-600">Custodia360</span> Sistema automatizado</span>
+=======
+            <span className="hidden sm:inline">Custodia360 primera empresa automatizada especializada en cumplimiento normativo</span>
+            <span className="sm:hidden">Sistema automatizado</span>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-gray-700 mb-4 sm:mb-6 leading-tight">
@@ -136,6 +141,7 @@ export default function HomePage() {
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
                 <div className="flex-1 text-center">
+<<<<<<< HEAD
                   <div className="bg-white rounded px-2 sm:px-6 py-1 text-xs sm:text-sm text-gray-600 inline-block">
                     <span className="hidden sm:inline">dashboard.entidad.custodia360.com</span>
                     <span className="sm:hidden">dashboard.custodia360.com</span>
@@ -144,6 +150,14 @@ export default function HomePage() {
                 <div className="bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-xs font-bold">
                   <span className="hidden sm:inline">100% LOPIVI</span>
                   <span className="sm:hidden">100%</span>
+=======
+                  <div className="bg-white rounded px-6 py-1 text-sm text-gray-600 inline-block">
+                    dashboard.entidad.custodia360.com
+                  </div>
+                </div>
+                <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">
+                  100% LOPIVI
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 </div>
               </div>
 
@@ -151,6 +165,7 @@ export default function HomePage() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                   {/* Panel principal */}
                   <div className="md:col-span-2">
+<<<<<<< HEAD
                     <h3 className="text-sm sm:text-lg font-bold text-gray-800 mb-4">Control de Cumplimiento</h3>
                     <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-4">
                       <div className="border border-gray-200 p-2 sm:p-4 rounded-lg text-center min-h-[60px] sm:min-h-auto flex flex-col justify-center">
@@ -172,6 +187,25 @@ export default function HomePage() {
                     <div className="border border-gray-200 rounded-lg p-2 sm:p-3 text-center font-bold text-xs sm:text-sm mb-4">
                       <span className="hidden sm:inline text-red-600">PROTOCOLO DE EMERGENCIA</span>
                       <span className="sm:hidden text-red-600">EMERGENCIA</span>
+=======
+                    <h3 className="text-lg font-bold text-gray-800 mb-4">Control de Cumplimiento</h3>
+                    <div className="grid grid-cols-3 gap-4 mb-4">
+                      <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg text-center">
+                        <div className="text-2xl font-bold text-blue-600">247</div>
+                        <div className="text-xs text-blue-700">Menores</div>
+                      </div>
+                      <div className="bg-green-50 border border-green-200 p-4 rounded-lg text-center">
+                        <div className="text-2xl font-bold text-green-600">100%</div>
+                        <div className="text-xs text-green-700">Cumplimiento</div>
+                      </div>
+                      <div className="bg-orange-50 border border-orange-200 p-4 rounded-lg text-center">
+                        <div className="text-2xl font-bold text-orange-600">12</div>
+                        <div className="text-xs text-orange-700">Protocolos</div>
+                      </div>
+                    </div>
+                    <div className="bg-red-600 text-white rounded-lg p-3 text-center font-bold text-sm mb-4">
+                      PROTOCOLO DE EMERGENCIA
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                     </div>
                   </div>
 
@@ -179,6 +213,7 @@ export default function HomePage() {
                   <div className="md:col-span-2">
                     <h4 className="font-bold text-gray-800 mb-3">Estado de Implementación</h4>
                     <div className="space-y-2">
+<<<<<<< HEAD
                       <div className="flex items-center justify-between p-2 border border-gray-200 rounded">
                         <span className="text-sm text-gray-700">Plan de Protección</span>
                         <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">Activo</span>
@@ -192,6 +227,21 @@ export default function HomePage() {
                         <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">32/32</span>
                       </div>
                       <div className="flex items-center justify-between p-2 border border-gray-200 rounded">
+=======
+                      <div className="flex items-center justify-between p-2 bg-green-50 border border-green-200 rounded">
+                        <span className="text-sm text-gray-700">Plan de Protección</span>
+                        <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">Activo</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-blue-50 border border-blue-200 rounded">
+                        <span className="text-sm text-gray-700">Delegado Certificado</span>
+                        <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded">Verificado</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-orange-50 border border-orange-200 rounded">
+                        <span className="text-sm text-gray-700">Personal Formado</span>
+                        <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">32/32</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-purple-50 border border-purple-200 rounded">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                         <span className="text-sm text-gray-700">Documentación</span>
                         <span className="bg-purple-600 text-white text-xs px-2 py-1 rounded">Completa</span>
                       </div>
@@ -232,20 +282,29 @@ export default function HomePage() {
       </section>
 
       {/* ¿Qué es LOPIVI? */}
+<<<<<<< HEAD
       <section className="py-20 bg-gray-50">
+=======
+      <section className="py-20 bg-white">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4">
               ¿Qué es la LOPIVI?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+<<<<<<< HEAD
               La Ley Orgánica de Protección Integral a la Infancia y la Adolescencia frente a la Violencia es <span className="text-yellow-400 font-bold">OBLIGATORIA</span> desde junio 2021
+=======
+              La Ley Orgánica de Protección Integral a la Infancia y la Adolescencia frente a la Violencia es <span className="text-blue-800 font-bold">OBLIGATORIA</span> desde junio 2021
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl font-bold text-gray-700 mb-6">Normativa que cambia todo</h3>
+<<<<<<< HEAD
               <div className="space-y-4 text-gray-600">
                 <p>
                   La LOPIVI establece un <span className="font-bold text-orange-400">marco legal integral</span> para proteger a los menores de cualquier forma de violencia en España.
@@ -255,6 +314,17 @@ export default function HomePage() {
                 </p>
                 <p>
                   Requiere la designación de un <span className="font-bold text-yellow-400">Delegado de Protección</span>, planes específicos, formación y protocolos de actuación.
+=======
+              <div className="space-y-4 text-gray-700">
+                <p>
+                  La LOPIVI establece un <span className="font-bold text-orange-600">marco legal integral</span> para proteger a los menores de cualquier forma de violencia en España.
+                </p>
+                <p>
+                  <span className="font-bold">Es obligatoria</span> para todas las entidades que trabajan con menores: clubes deportivos, escuelas, campamentos, academias, guarderías...
+                </p>
+                <p>
+                  Requiere la designación de un <span className="font-bold text-blue-600">Delegado de Protección</span>, planes específicos, formación y protocolos de actuación.
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 </p>
               </div>
 
@@ -299,7 +369,11 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4">
+<<<<<<< HEAD
               Con <span className="text-blue-600">Custodia360</span>
+=======
+              Con Custodia360
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Plataforma integral de gestión LOPIVI con dashboards especializados para cada rol
@@ -316,12 +390,20 @@ export default function HomePage() {
               <div className="space-y-6">
                 <div className="border-l-4 border-blue-900 pl-4">
                   <h4 className="font-bold text-gray-700 mb-2">Automatización</h4>
+<<<<<<< HEAD
                   <p className="text-gray-600 text-sm">Sistema 100% automatizado</p>
+=======
+                  <p className="text-gray-600 text-sm">Sistema 100% automatizado para cumplimiento integral</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 </div>
 
                 <div className="border-l-4 border-blue-900 pl-4">
                   <h4 className="font-bold text-gray-700 mb-2">Protección</h4>
+<<<<<<< HEAD
                   <p className="text-gray-600 text-sm">Cumplimiento LOPIVI</p>
+=======
+                  <p className="text-gray-600 text-sm">Cumplimiento LOPIVI total y protección garantizada</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 </div>
 
                 <div className="border-l-4 border-blue-900 pl-4">
@@ -357,9 +439,14 @@ export default function HomePage() {
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     </div>
                     <div className="flex-1 text-center">
+<<<<<<< HEAD
                       <div className="bg-gray-200 rounded px-2 sm:px-4 py-1 text-xs text-gray-600 inline-block">
                         <span className="hidden sm:inline">dashboard.custodia360.com</span>
                         <span className="sm:hidden">custodia360.com</span>
+=======
+                      <div className="bg-gray-200 rounded px-4 py-1 text-xs text-gray-600 inline-block">
+                        dashboard.custodia360.com
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                       </div>
                     </div>
                   </div>
@@ -369,16 +456,25 @@ export default function HomePage() {
                     {/* Header del Dashboard */}
                     <div className="flex justify-between items-center pb-4 border-b">
                       <div>
+<<<<<<< HEAD
                         <h3 className="text-sm sm:text-lg font-bold text-gray-700">Dashboard de Protección</h3>
                         <p className="text-xs sm:text-sm text-gray-500">Club Deportivo Ejemplo</p>
                       </div>
                       <div className="bg-green-100 border border-green-300 text-green-800 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                         <span className="hidden sm:inline">100% Cumplimiento</span>
                         <span className="sm:hidden">100%</span>
+=======
+                        <h3 className="text-lg font-bold text-gray-700">Dashboard de Protección</h3>
+                        <p className="text-sm text-gray-500">Club Deportivo Ejemplo</p>
+                      </div>
+                      <div className="bg-green-100 border border-green-300 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        100% Cumplimiento
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                       </div>
                     </div>
 
                     {/* Métricas */}
+<<<<<<< HEAD
                     <div className="grid grid-cols-3 gap-2 sm:gap-4">
                       <div className="border border-gray-300 p-1 sm:p-3 rounded-lg text-center min-h-[60px] sm:min-h-auto flex flex-col justify-center">
                         <div className="text-sm sm:text-2xl font-bold text-gray-700">247</div>
@@ -400,6 +496,20 @@ export default function HomePage() {
                           <span className="hidden sm:inline">Personal Formado</span>
                           <span className="sm:hidden">Personal</span>
                         </div>
+=======
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="bg-blue-50 border border-blue-300 p-3 rounded-lg">
+                        <div className="text-2xl font-bold text-blue-600">247</div>
+                        <div className="text-xs text-blue-700">Menores Protegidos</div>
+                      </div>
+                      <div className="bg-orange-50 border border-orange-300 p-3 rounded-lg">
+                        <div className="text-2xl font-bold text-orange-600">12</div>
+                        <div className="text-xs text-orange-700">Protocolos Activos</div>
+                      </div>
+                      <div className="bg-green-50 border border-green-300 p-3 rounded-lg">
+                        <div className="text-2xl font-bold text-green-600">100%</div>
+                        <div className="text-xs text-green-700">Personal Formado</div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                       </div>
                     </div>
 
@@ -407,16 +517,25 @@ export default function HomePage() {
                     <div className="bg-white border border-gray-300 rounded-lg p-4">
                       <div className="text-sm font-medium text-gray-700 mb-2">Evolución Cumplimiento</div>
                       <div className="flex items-end space-x-2 h-20">
+<<<<<<< HEAD
                         <div className="bg-gray-300 w-8 h-12 rounded"></div>
                         <div className="bg-gray-400 w-8 h-16 rounded"></div>
                         <div className="bg-gray-500 w-8 h-20 rounded"></div>
                         <div className="bg-gray-600 w-8 h-20 rounded"></div>
                         <div className="bg-gray-700 w-8 h-20 rounded"></div>
+=======
+                        <div className="bg-blue-400 w-8 h-12 rounded"></div>
+                        <div className="bg-green-500 w-8 h-16 rounded"></div>
+                        <div className="bg-orange-500 w-8 h-20 rounded"></div>
+                        <div className="bg-purple-600 w-8 h-20 rounded"></div>
+                        <div className="bg-green-600 w-8 h-20 rounded"></div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                       </div>
                     </div>
 
                     {/* Lista de tareas */}
                     <div className="space-y-2">
+<<<<<<< HEAD
                       <div className="flex items-center justify-between p-2 border border-gray-300 rounded">
                         <span className="text-sm text-gray-700">Plan de Protección</span>
                         <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">Activo</span>
@@ -426,6 +545,17 @@ export default function HomePage() {
                         <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded">Verificado</span>
                       </div>
                       <div className="flex items-center justify-between p-2 border border-gray-300 rounded">
+=======
+                      <div className="flex items-center justify-between p-2 bg-green-50 border border-green-300 rounded">
+                        <span className="text-sm text-gray-700">Plan de Protección</span>
+                        <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">Activo</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-blue-50 border border-blue-300 rounded">
+                        <span className="text-sm text-gray-700">Delegado Certificado</span>
+                        <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded">Verificado</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-orange-50 border border-orange-300 rounded">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                         <span className="text-sm text-gray-700">Formación Personal</span>
                         <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">Completado</span>
                       </div>
@@ -435,9 +565,14 @@ export default function HomePage() {
               </div>
 
               {/* Badge de características */}
+<<<<<<< HEAD
               <div className="absolute -top-2 sm:-top-4 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg">
                 <span className="hidden sm:inline">100% Automatizado</span>
                 <span className="sm:hidden">100%</span>
+=======
+              <div className="absolute -top-4 -right-4 bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                100% Automatizado
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </div>
 
               {/* Dashboards adicionales superpuestos */}
@@ -457,6 +592,7 @@ export default function HomePage() {
                       <div className="p-3 space-y-2">
                         <div className="text-xs font-bold text-gray-800">Panel Contratante</div>
                         <div className="grid grid-cols-2 gap-2">
+<<<<<<< HEAD
                           <div className="border border-gray-300 p-2 rounded text-center">
                             <div className="text-sm font-bold text-gray-700">LOPIVI</div>
                             <div className="text-xs text-gray-600">Activo</div>
@@ -468,6 +604,19 @@ export default function HomePage() {
                         </div>
                         <div className="bg-white border border-gray-300 rounded p-2">
                           <div className="h-2 bg-gray-600 rounded"></div>
+=======
+                          <div className="bg-green-50 border border-green-300 p-2 rounded text-center">
+                            <div className="text-sm font-bold text-green-700">LOPIVI</div>
+                            <div className="text-xs text-green-600">Activo</div>
+                          </div>
+                          <div className="bg-blue-50 border border-blue-300 p-2 rounded text-center">
+                            <div className="text-sm font-bold text-blue-700">100%</div>
+                            <div className="text-xs text-blue-600">Cumple</div>
+                          </div>
+                        </div>
+                        <div className="bg-white border border-gray-300 rounded p-2">
+                          <div className="h-2 bg-green-600 rounded"></div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                         </div>
                       </div>
                     </div>
@@ -487,6 +636,7 @@ export default function HomePage() {
                       <div className="p-3 space-y-2">
                         <div className="text-xs font-bold text-gray-800">Control Total</div>
                         <div className="grid grid-cols-3 gap-1">
+<<<<<<< HEAD
                           <div className="border border-gray-300 p-1 rounded">
                             <div className="text-xs font-bold text-gray-700">847</div>
                             <div className="text-xs text-gray-600">Entid.</div>
@@ -505,6 +655,26 @@ export default function HomePage() {
                           <div className="h-6 bg-gray-500 rounded"></div>
                           <div className="h-10 bg-gray-600 rounded"></div>
                           <div className="h-7 bg-gray-500 rounded"></div>
+=======
+                          <div className="bg-purple-50 border border-purple-300 p-1 rounded">
+                            <div className="text-xs font-bold text-purple-700">847</div>
+                            <div className="text-xs text-purple-600">Entid.</div>
+                          </div>
+                          <div className="bg-blue-50 border border-blue-300 p-1 rounded">
+                            <div className="text-xs font-bold text-blue-700">1.2k</div>
+                            <div className="text-xs text-blue-600">Deleg.</div>
+                          </div>
+                          <div className="bg-green-50 border border-green-300 p-1 rounded">
+                            <div className="text-xs font-bold text-green-700">98%</div>
+                            <div className="text-xs text-green-600">Activo</div>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-4 gap-1">
+                          <div className="h-8 bg-orange-500 rounded"></div>
+                          <div className="h-6 bg-blue-400 rounded"></div>
+                          <div className="h-10 bg-purple-600 rounded"></div>
+                          <div className="h-7 bg-green-500 rounded"></div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                         </div>
                       </div>
                     </div>
@@ -718,14 +888,22 @@ export default function HomePage() {
               <div className="bg-white border border-gray-300 rounded-xl shadow-2xl p-4">
                 {/* Simulación de pantalla de ordenador */}
                 <div className="bg-white rounded-lg">
+<<<<<<< HEAD
                   <div className="bg-gray-100 rounded-t-lg px-4 py-3 flex items-center space-x-2">
+=======
+                  <div className="bg-blue-900 rounded-t-lg px-4 py-3 flex items-center space-x-2">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                     <div className="flex space-x-2">
                       <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                       <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     </div>
                     <div className="flex-1 text-center">
+<<<<<<< HEAD
                       <div className="bg-white rounded px-4 py-1 text-xs text-gray-600 inline-block">
+=======
+                      <div className="bg-white bg-opacity-20 rounded px-4 py-1 text-xs text-white inline-block">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                         campus.custodia360.com
                       </div>
                     </div>
@@ -745,6 +923,7 @@ export default function HomePage() {
                     </div>
 
                     {/* Progreso General */}
+<<<<<<< HEAD
                     <div className="border border-gray-300 rounded-lg p-4">
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-sm font-medium text-gray-700">Progreso General</span>
@@ -754,41 +933,80 @@ export default function HomePage() {
                         <div className="bg-blue-600 h-3 rounded-full" style={{width: '60%'}}></div>
                       </div>
                       <p className="text-xs text-gray-600 mt-1">3 de 5 módulos completados</p>
+=======
+                    <div className="bg-blue-50 rounded-lg p-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium text-blue-800">Progreso General</span>
+                        <span className="text-lg font-bold text-blue-600">60%</span>
+                      </div>
+                      <div className="w-full bg-blue-200 rounded-full h-3">
+                        <div className="bg-blue-600 h-3 rounded-full" style={{width: '60%'}}></div>
+                      </div>
+                      <p className="text-xs text-blue-600 mt-1">3 de 5 módulos completados</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                     </div>
 
                     {/* Lista de módulos */}
                     <div className="space-y-3">
+<<<<<<< HEAD
                       <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
                         <div className="flex items-center">
                           <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">✓</div>
+=======
+                      <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">✓</div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                           <div>
                             <p className="text-sm font-bold text-gray-700">Módulo 1: Introducción LOPIVI</p>
                             <p className="text-xs text-gray-500">60 min - Completado</p>
                           </div>
                         </div>
+<<<<<<< HEAD
                         <span className="bg-gray-600 text-white text-xs px-2 py-1 rounded">100%</span>
                       </div>
 
                       <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
                         <div className="flex items-center">
                           <div className="w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">✓</div>
+=======
+                        <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">100%</span>
+                      </div>
+
+                      <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">✓</div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                           <div>
                             <p className="text-sm font-bold text-gray-700">Módulo 2: Rol del Delegado</p>
                             <p className="text-xs text-gray-500">60 min - Completado</p>
                           </div>
                         </div>
+<<<<<<< HEAD
                         <span className="bg-gray-600 text-white text-xs px-2 py-1 rounded">100%</span>
                       </div>
 
                       <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
                         <div className="flex items-center">
                           <div className="w-8 h-8 bg-gray-500 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">3</div>
+=======
+                        <span className="bg-green-600 text-white text-xs px-2 py-1 rounded">100%</span>
+                      </div>
+
+                      <div className="flex items-center justify-between p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                        <div className="flex items-center">
+                          <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center text-white text-sm font-bold mr-3">3</div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                           <div>
                             <p className="text-sm font-bold text-gray-700">Módulo 3: Protocolos de Actuación</p>
                             <p className="text-xs text-gray-500">90 min - En progreso</p>
                           </div>
                         </div>
+<<<<<<< HEAD
                         <span className="bg-gray-500 text-white text-xs px-2 py-1 rounded">75%</span>
+=======
+                        <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">75%</span>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                       </div>
 
                       <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg opacity-75">
@@ -823,7 +1041,11 @@ export default function HomePage() {
               </div>
 
               {/* Badge de certificación */}
+<<<<<<< HEAD
               <div className="absolute -top-4 -left-4 bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+=======
+              <div className="absolute -top-4 -right-4 bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 Certificación
               </div>
             </div>
@@ -832,10 +1054,17 @@ export default function HomePage() {
           {/* Botón CTA */}
           <div className="text-center mt-12">
             <Link
+<<<<<<< HEAD
               href="/formacion-delegado"
               className="bg-blue-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-800 transition-colors inline-block"
             >
               Ver Campus Virtual
+=======
+              href="/planes"
+              className="bg-blue-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-800 transition-colors inline-block"
+            >
+              Ver Planes con Formación Incluida
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
             </Link>
           </div>
         </div>
@@ -887,6 +1116,7 @@ export default function HomePage() {
 
                     {/* Métricas principales */}
                     <div className="grid grid-cols-3 gap-3">
+<<<<<<< HEAD
                       <div className="border border-gray-300 p-3 rounded-lg text-center">
                         <div className="text-2xl font-bold text-gray-700">247</div>
                         <div className="text-xs text-gray-600">Menores</div>
@@ -898,11 +1128,25 @@ export default function HomePage() {
                       <div className="border border-gray-300 p-3 rounded-lg text-center">
                         <div className="text-2xl font-bold text-gray-700">12</div>
                         <div className="text-xs text-gray-600">Protocolos</div>
+=======
+                      <div className="bg-blue-50 border border-blue-300 p-3 rounded-lg text-center">
+                        <div className="text-2xl font-bold text-blue-600">247</div>
+                        <div className="text-xs text-blue-700">Menores</div>
+                      </div>
+                      <div className="bg-green-50 border border-green-300 p-3 rounded-lg text-center">
+                        <div className="text-2xl font-bold text-green-600">98%</div>
+                        <div className="text-xs text-green-700">Cumplimiento</div>
+                      </div>
+                      <div className="bg-purple-50 border border-purple-300 p-3 rounded-lg text-center">
+                        <div className="text-2xl font-bold text-purple-600">12</div>
+                        <div className="text-xs text-purple-700">Protocolos</div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                       </div>
                     </div>
 
                     {/* Acciones rápidas */}
                     <div className="space-y-2">
+<<<<<<< HEAD
                       <div className="border border-gray-300 rounded-lg p-3 text-center font-bold text-sm">
                         <span className="text-red-600">CASO DE EMERGENCIA</span>
                       </div>
@@ -911,6 +1155,16 @@ export default function HomePage() {
                           Gestionar Casos
                         </button>
                         <button className="bg-gray-100 text-gray-800 p-2 rounded text-xs font-medium">
+=======
+                      <div className="bg-red-600 text-white rounded-lg p-3 text-center font-bold text-sm">
+                        CASO DE EMERGENCIA
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <button className="bg-blue-100 text-blue-800 p-2 rounded text-xs font-medium">
+                          Gestionar Casos
+                        </button>
+                        <button className="bg-green-100 text-green-800 p-2 rounded text-xs font-medium">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                           Ver Documentos
                         </button>
                       </div>
@@ -920,7 +1174,11 @@ export default function HomePage() {
                     <div className="bg-gray-50 rounded p-3">
                       <div className="text-xs font-bold text-gray-700 mb-2">Formación Personal</div>
                       <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
+<<<<<<< HEAD
                         <div className="bg-black h-2 rounded-full" style={{width: '85%'}}></div>
+=======
+                        <div className="bg-orange-500 h-2 rounded-full" style={{width: '85%'}}></div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                       </div>
                       <div className="text-xs text-gray-600">28/32 personas formadas</div>
                     </div>
@@ -941,7 +1199,11 @@ export default function HomePage() {
               </div>
 
               {/* Badge de estado */}
+<<<<<<< HEAD
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+=======
+              <div className="absolute -top-4 -right-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 100% Operativo
               </div>
             </div>
@@ -955,7 +1217,11 @@ export default function HomePage() {
               <div className="space-y-4">
                 <div className="border-l-4 border-blue-900 pl-6">
                   <h4 className="font-bold text-gray-700 mb-1">Delegado de Protección</h4>
+<<<<<<< HEAD
                   <p className="text-gray-600 text-sm">Formación y certificación</p>
+=======
+                  <p className="text-gray-600 text-sm">Formación especializada y certificación</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 </div>
 
                 <div className="border-l-4 border-blue-900 pl-6">
@@ -980,7 +1246,11 @@ export default function HomePage() {
 
                 <div className="border-l-4 border-blue-900 pl-6">
                   <h4 className="font-bold text-gray-700 mb-1">Documentación completa LOPIVI</h4>
+<<<<<<< HEAD
                   <p className="text-gray-600 text-sm">Todos los documentos</p>
+=======
+                  <p className="text-gray-600 text-sm">Todos los documentos legales requeridos</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 </div>
 
                 <div className="border-l-4 border-blue-900 pl-6">
@@ -1022,6 +1292,7 @@ export default function HomePage() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Servicios Detallados */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4">
@@ -1341,6 +1612,8 @@ export default function HomePage() {
         </div>
       </section>
 
+=======
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       {/* Estadísticas Reales LOPIVI */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -1352,7 +1625,11 @@ export default function HomePage() {
               ESTADÍSTICAS REALES LOPIVI
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4">
+<<<<<<< HEAD
               Periodo 2021-2025: <span className="text-blue-900">LA REALIDAD DE LAS INSPECCIONES</span>
+=======
+              Periodo 2021-2025: <span className="text-gray-600">LA REALIDAD DE LAS INSPECCIONES</span>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
             </h2>
             <p className="text-xl text-gray-600">
               Datos oficiales que demuestran la urgencia de cumplir la LOPIVI
@@ -1382,6 +1659,7 @@ export default function HomePage() {
             </div>
           </div>
 
+<<<<<<< HEAD
           <div className="bg-white border-4 border-blue-200 rounded-xl p-8 max-w-4xl mx-auto text-center">
             <p className="text-xl font-bold text-gray-700 mb-4">
               <span className="text-blue-900">1 de cada 3</span> inspecciones realizadas, acaba en expediente abierto
@@ -1390,6 +1668,16 @@ export default function HomePage() {
               33% ACABAN EN SANCIONES
             </div>
             <div className="bg-blue-900 text-white px-3 py-1 rounded-lg font-bold text-sm inline-block">
+=======
+          <div className="bg-white border-4 border-gray-300 rounded-xl p-8 max-w-4xl mx-auto text-center shadow-2xl">
+            <p className="text-xl font-bold text-gray-700 mb-4">
+              <span className="text-blue-900">1 de cada 3</span> inspecciones realizadas, acaba en expediente abierto
+            </p>
+            <div className="text-4xl font-black text-blue-900 mb-4 tracking-wide">
+              33% ACABAN EN SANCIONES
+            </div>
+            <div className="bg-blue-900 text-white px-6 py-3 rounded-lg font-bold text-xl">
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               TU ENTIDAD ESTÁ PROTEGIDA
             </div>
           </div>
@@ -1417,10 +1705,17 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Caso 1 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 shadow-lg">
               <div className="mb-4">
                 <h3 className="text-lg font-bold text-gray-700">Club Deportivo (Andalucía)</h3>
                 <p className="text-gray-700 text-sm font-medium">Sanción: 25.000€</p>
+=======
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-gray-700">Club Deportivo (Andalucía)</h3>
+                <p className="text-blue-800 text-sm font-medium">Sanción: 25.000€</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </div>
               <div className="space-y-3 text-gray-700">
                 <p><span className="font-bold text-red-800">Infracción:</span> No tener delegado de protección ni protocolos</p>
@@ -1430,10 +1725,17 @@ export default function HomePage() {
             </div>
 
             {/* Caso 2 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 shadow-lg">
               <div className="mb-4">
                 <h3 className="text-lg font-bold text-gray-700">Academia de Fútbol (Madrid)</h3>
                 <p className="text-gray-700 text-sm font-medium">Sanción: 45.000€</p>
+=======
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-gray-700">Academia de Fútbol (Madrid)</h3>
+                <p className="text-blue-800 text-sm font-medium">Sanción: 45.000€</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </div>
               <div className="space-y-3 text-gray-700">
                 <p><span className="font-bold text-red-800">Infracción:</span> Personal sin formación LOPIVI</p>
@@ -1443,10 +1745,17 @@ export default function HomePage() {
             </div>
 
             {/* Caso 3 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 shadow-lg">
               <div className="mb-4">
                 <h3 className="text-lg font-bold text-gray-700">Centro de Ocio (Valencia)</h3>
                 <p className="text-gray-700 text-sm font-medium">Sanción: 15.000€</p>
+=======
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-gray-700">Centro de Ocio (Valencia)</h3>
+                <p className="text-blue-800 text-sm font-medium">Sanción: 15.000€</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </div>
               <div className="space-y-3 text-gray-700">
                 <p><span className="font-bold text-red-800">Infracción:</span> No reportar situación sospechosa</p>
@@ -1456,10 +1765,17 @@ export default function HomePage() {
             </div>
 
             {/* Caso 4 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 shadow-lg">
               <div className="mb-4">
                 <h3 className="text-lg font-bold text-gray-700">Campamento de Verano (Cataluña)</h3>
                 <p className="text-gray-700 text-sm font-medium">Sanción: 35.000€</p>
+=======
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-gray-700">Campamento de Verano (Cataluña)</h3>
+                <p className="text-blue-800 text-sm font-medium">Sanción: 35.000€</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </div>
               <div className="space-y-3 text-gray-700">
                 <p><span className="font-bold text-red-800">Infracción:</span> Documentación LOPIVI inexistente</p>
@@ -1469,10 +1785,17 @@ export default function HomePage() {
             </div>
 
             {/* Caso 5 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 shadow-lg">
               <div className="mb-4">
                 <h3 className="text-lg font-bold text-gray-700">Escuela Deportiva Sevilla</h3>
                 <p className="text-gray-700 text-sm font-medium">Sanción: 89.000€</p>
+=======
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-gray-700">Escuela Deportiva Sevilla</h3>
+                <p className="text-blue-800 text-sm font-medium">Sanción: 89.000€</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </div>
               <div className="space-y-3 text-gray-700">
                 <p><span className="font-bold text-red-800">Infracción:</span> Delegado sin certificación ni formación especializada</p>
@@ -1482,10 +1805,17 @@ export default function HomePage() {
             </div>
 
             {/* Caso 6 */}
+<<<<<<< HEAD
             <div className="bg-white border border-gray-300 rounded-xl p-6 shadow-lg">
               <div className="mb-4">
                 <h3 className="text-lg font-bold text-gray-700">Centro Deportivo Bilbao</h3>
                 <p className="text-gray-700 text-sm font-medium">Sanción: 156.000€</p>
+=======
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-gray-700">Centro Deportivo Bilbao</h3>
+                <p className="text-blue-800 text-sm font-medium">Sanción: 156.000€</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </div>
               <div className="space-y-3 text-gray-700">
                 <p><span className="font-bold text-red-800">Infracción:</span> Ocultación de incidente + falta de comunicación a autoridades</p>
@@ -1499,6 +1829,7 @@ export default function HomePage() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Con acceso desde cualquier lugar */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
@@ -1700,6 +2031,8 @@ export default function HomePage() {
         </div>
       </section>
 
+=======
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       {/* CTA Final */}
       <section className="py-20 bg-blue-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -1730,8 +2063,21 @@ export default function HomePage() {
                     Contratar
                   </Link>
                 </li>
+<<<<<<< HEAD
 
 
+=======
+                <li>
+                  <Link href="/dashboard-directo" className="text-gray-400 hover:text-white transition-colors">
+                    Acceso Delegados
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/demo" className="text-gray-400 hover:text-white transition-colors">
+                    Ver Demo
+                  </Link>
+                </li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
                 <li>
                   <Link href="/planes" className="text-gray-400 hover:text-white transition-colors">
                     Precios
@@ -1769,7 +2115,15 @@ export default function HomePage() {
                     Dashboard LOPIVI
                   </Link>
                 </li>
+<<<<<<< HEAD
 
+=======
+                <li>
+                  <Link href="/guia" className="text-gray-400 hover:text-white transition-colors">
+                    Documentación Legal
+                  </Link>
+                </li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </ul>
             </div>
 
@@ -1889,7 +2243,18 @@ export default function HomePage() {
                 <p className="text-sm text-gray-400">
                   © 2025 Custodia360 S.L. propiedad de Sportsmotherland SL. Todos los derechos reservados.
                 </p>
+<<<<<<< HEAD
 
+=======
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-gray-400">España</span>
+                  <div className="w-4 h-3 bg-red-500 border rounded-sm flex flex-col">
+                    <div className="h-1 bg-red-500"></div>
+                    <div className="h-1 bg-yellow-400"></div>
+                    <div className="h-1 bg-red-500"></div>
+                  </div>
+                </div>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
               </div>
             </div>
           </div>

@@ -41,9 +41,15 @@ export default function PagoPage() {
     const planes = {
       '1-50': { nombre: 'Plan 50', precio: 19, descripcion: '1-50 menores' },
       '51-200': { nombre: 'Plan 200', precio: 49, descripcion: '51-200 menores' },
+<<<<<<< HEAD
       '251-500': { nombre: 'Plan 500', precio: 105, descripcion: '251-500 menores' },
       '501+': { nombre: 'Plan 500+', precio: 250, descripcion: '+501 menores' },
       'temporal': { nombre: 'Custodia Temporal', precio: 100, descripcion: 'Hasta 60 días' },
+=======
+      '201-500': { nombre: 'Plan 500', precio: 105, descripcion: '201-500 menores' },
+      '501+': { nombre: 'Plan 500+', precio: 250, descripcion: '+501 menores' },
+      'temporal': { nombre: 'Custodia Temporal', precio: 39, descripcion: 'Hasta 60 días' },
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       'kit': { nombre: 'Kit Comunicación', precio: 30, descripcion: 'Material LOPIVI' }
     }
 

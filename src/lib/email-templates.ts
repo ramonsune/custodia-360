@@ -1,7 +1,11 @@
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+<<<<<<< HEAD
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'info@custodia360.es'
+=======
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
 
 // Función para generar el HTML base con el estilo de Custodia360
 const generateEmailHTML = (title: string, content: string) => `
@@ -69,7 +73,11 @@ const generateEmailHTML = (title: string, content: string) => `
     </div>
     <div class="footer">
       <p><strong>Custodia360</strong> - Primera empresa automatizada especializada en LOPIVI</p>
+<<<<<<< HEAD
       <p>www.custodia360.es | info@custodia360.es</p>
+=======
+      <p>www.custodia360.es | soporte@custodia360.es</p>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       <p>Este email fue enviado automáticamente desde nuestro sistema.</p>
     </div>
   </div>
@@ -82,7 +90,11 @@ const emailTemplates = {
   async enviarConfirmacionContratacion(email: string, nombre: string, entidad: string, plan: string, credenciales: {email: string, password: string}) {
     const content = `
       <div class="success">
+<<<<<<< HEAD
         <h2>Contratación completada con éxito</h2>
+=======
+        <h2>¡Contratación completada con éxito!</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>Estimado/a <strong>${nombre}</strong>,</p>
         <p>Su contratación del <strong>${plan}</strong> para <strong>${entidad}</strong> ha sido procesada correctamente.</p>
       </div>
@@ -101,17 +113,28 @@ const emailTemplates = {
 
       <h3>Próximos pasos automáticos:</h3>
       <ul>
+<<<<<<< HEAD
         <li>Configuración del sistema (completado)</li>
         <li>Formación del delegado de protección (+1h)</li>
         <li>Certificación y activación (+48h)</li>
         <li>Sistema operativo completo (+72h)</li>
+=======
+        <li>✅ Configuración del sistema (completado)</li>
+        <li>⏳ Formación del delegado de protección (+1h)</li>
+        <li>⏳ Certificación y activación (+48h)</li>
+        <li>⏳ Sistema operativo completo (+72h)</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </ul>
     `;
 
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Contratación Custodia360 completada - ${entidad}`,
+=======
+      subject: `✅ Contratación Custodia360 completada - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Contratación completada', content)
     });
   },
@@ -148,7 +171,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Credenciales Delegado ${tipo} - ${entidad}`,
+=======
+      subject: `🎓 Credenciales Delegado ${tipo} - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML(`Delegado de Protección ${tipo}`, content)
     });
   },
@@ -157,7 +184,11 @@ const emailTemplates = {
   async enviarCertificadoCompletado(email: string, nombre: string, entidad: string, codigo: string, fecha: string) {
     const content = `
       <div class="success">
+<<<<<<< HEAD
         <h2>Certificación LOPIVI completada</h2>
+=======
+        <h2>🎉 ¡Certificación LOPIVI completada!</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>Estimado/a <strong>${nombre}</strong>,</p>
         <p>Ha completado con éxito la formación y certificación como Delegado de Protección para <strong>${entidad}</strong>.</p>
       </div>
@@ -188,7 +219,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Certificación LOPIVI completada - ${entidad}`,
+=======
+      subject: `🏆 Certificación LOPIVI completada - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Certificación completada', content)
     });
   },
@@ -197,18 +232,30 @@ const emailTemplates = {
   async enviarSistemaOperativo(email: string, nombre: string, entidad: string, delegado: string, fecha: string) {
     const content = `
       <div class="success">
+<<<<<<< HEAD
         <h2>Sistema LOPIVI operativo</h2>
+=======
+        <h2>🚀 Sistema LOPIVI operativo</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>Estimado/a <strong>${nombre}</strong>,</p>
         <p><strong>${entidad}</strong> tiene ya implementada la LOPIVI completamente y cumple con toda la normativa.</p>
       </div>
 
       <h3>Estado actual:</h3>
       <ul>
+<<<<<<< HEAD
         <li>Delegado certificado: <strong>${delegado}</strong></li>
         <li>Plan de protección específico</li>
         <li>Protocolos de actuación</li>
         <li>Sistema de gestión operativo</li>
         <li>Formación del personal</li>
+=======
+        <li>✅ Delegado certificado: <strong>${delegado}</strong></li>
+        <li>✅ Plan de protección específico</li>
+        <li>✅ Protocolos de actuación</li>
+        <li>✅ Sistema de gestión operativo</li>
+        <li>✅ Formación del personal</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </ul>
 
       <p>Su entidad está protegida ante cualquier inspección desde el <strong>${fecha}</strong>.</p>
@@ -226,7 +273,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `${entidad} - Sistema LOPIVI operativo`,
+=======
+      subject: `🎯 ${entidad} - Sistema LOPIVI operativo`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Sistema operativo', content)
     });
   },
@@ -264,7 +315,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Factura ${numeroFactura} - ${entidad}`,
+=======
+      subject: `📄 Factura ${numeroFactura} - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Factura - Primer pago', content)
     });
   },
@@ -290,17 +345,28 @@ const emailTemplates = {
 
       <h3>Su entidad mantiene:</h3>
       <ul>
+<<<<<<< HEAD
         <li>Cumplimiento LOPIVI garantizado</li>
         <li>Actualizaciones automáticas</li>
         <li>Soporte técnico especializado</li>
         <li>Dashboard operativo 24/7</li>
+=======
+        <li>✅ Cumplimiento LOPIVI garantizado</li>
+        <li>✅ Actualizaciones automáticas</li>
+        <li>✅ Soporte técnico especializado</li>
+        <li>✅ Dashboard operativo 24/7</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </ul>
     `;
 
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Factura ${numeroFactura} - Segundo pago - ${entidad}`,
+=======
+      subject: `📄 Factura ${numeroFactura} - Segundo pago - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Factura - Segundo pago', content)
     });
   },
@@ -312,16 +378,27 @@ const emailTemplates = {
       <p>Le recordamos que el servicio LOPIVI de <strong>${entidad}</strong> vence el <strong>${fechaVencimiento}</strong>.</p>
 
       <div class="warning">
+<<<<<<< HEAD
         <h4>Quedan ${diasRestantes} días</h4>
+=======
+        <h4>⏰ Quedan ${diasRestantes} días</h4>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>Para mantener la protección LOPIVI de su entidad, renueve antes del vencimiento.</p>
       </div>
 
       <h3>¿Qué ocurre si no renueva?</h3>
       <ul>
+<<<<<<< HEAD
         <li>Pérdida de protección LOPIVI</li>
         <li>Dashboard inaccesible</li>
         <li>Sin actualizaciones normativas</li>
         <li>Riesgo de sanciones en inspecciones</li>
+=======
+        <li>❌ Pérdida de protección LOPIVI</li>
+        <li>❌ Dashboard inaccesible</li>
+        <li>❌ Sin actualizaciones normativas</li>
+        <li>⚠️ Riesgo de sanciones en inspecciones</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </ul>
 
       <div style="text-align: center;">
@@ -330,17 +407,28 @@ const emailTemplates = {
 
       <p>La renovación garantiza:</p>
       <ul>
+<<<<<<< HEAD
         <li>Continuidad del servicio</li>
         <li>Actualizaciones automáticas</li>
         <li>Soporte especializado</li>
         <li>Protección ante inspecciones</li>
+=======
+        <li>✅ Continuidad del servicio</li>
+        <li>✅ Actualizaciones automáticas</li>
+        <li>✅ Soporte especializado</li>
+        <li>✅ Protección ante inspecciones</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </ul>
     `;
 
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Recordatorio renovación - ${entidad} (${diasRestantes} días)`,
+=======
+      subject: `⏰ Recordatorio renovación - ${entidad} (${diasRestantes} días)`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Recordatorio de renovación', content)
     });
   },
@@ -382,7 +470,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Renovación anual - ${entidad}`,
+=======
+      subject: `🔄 Renovación anual - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Renovación anual', content)
     });
   },
@@ -394,7 +486,11 @@ const emailTemplates = {
       <p>Tiene pendiente completar la formación LOPIVI para <strong>${entidad}</strong>.</p>
 
       <div class="warning">
+<<<<<<< HEAD
         <h4>Progreso actual: ${progreso}%</h4>
+=======
+        <h4>📚 Progreso actual: ${progreso}%</h4>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>Complete la formación para activar el dashboard completo.</p>
       </div>
 
@@ -416,7 +512,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Recordatorio formación LOPIVI - ${entidad}`,
+=======
+      subject: `📚 Recordatorio formación LOPIVI - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Recordatorio de formación', content)
     });
   },
@@ -428,18 +528,31 @@ const emailTemplates = {
       <p>Estado de la formación LOPIVI de <strong>${delegado}</strong> en <strong>${entidad}</strong>:</p>
 
       <div class="success">
+<<<<<<< HEAD
         <h4>Progreso: ${progreso}%</h4>
+=======
+        <h4>📊 Progreso: ${progreso}%</h4>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>La formación avanza según lo planificado.</p>
       </div>
 
       <h3>Módulos completados:</h3>
       <ul>
+<<<<<<< HEAD
         <li>Introducción a la LOPIVI</li>
         <li>Rol del delegado de protección</li>
         <li>Detección de casos</li>
         <li>Protocolos de actuación (en progreso)</li>
         <li>Gestión de emergencias</li>
         <li>Evaluación final</li>
+=======
+        <li>✅ Introducción a la LOPIVI</li>
+        <li>✅ Rol del delegado de protección</li>
+        <li>✅ Detección de casos</li>
+        <li>⏳ Protocolos de actuación (en progreso)</li>
+        <li>⏳ Gestión de emergencias</li>
+        <li>⏳ Evaluación final</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </ul>
 
       <p><strong>Tiempo estimado para completar:</strong> 2-3 días laborables</p>
@@ -452,7 +565,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Estado formación - ${entidad}`,
+=======
+      subject: `📈 Estado formación - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Estado de formación', content)
     });
   },
@@ -464,7 +581,11 @@ const emailTemplates = {
       <p>Su certificación como Delegado de Protección para <strong>${entidad}</strong> vence el <strong>${fechaVencimiento}</strong>.</p>
 
       <div class="warning">
+<<<<<<< HEAD
         <h4>Quedan ${diasRestantes} días</h4>
+=======
+        <h4>⚠️ Quedan ${diasRestantes} días</h4>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>Renueve su certificación para mantener el cumplimiento LOPIVI.</p>
       </div>
 
@@ -488,12 +609,57 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Vencimiento certificación - ${entidad} (${diasRestantes} días)`,
+=======
+      subject: `🎓 Vencimiento certificación - ${entidad} (${diasRestantes} días)`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Vencimiento de certificación', content)
     });
   },
 
+<<<<<<< HEAD
 
+=======
+  // Informe trimestral
+  async enviarInformeTrimestral(email: string, nombre: string, entidad: string, trimestre: string, estadoCumplimiento: number, incidentes: number, actualizaciones: string[]) {
+    const content = `
+      <p>Estimado/a <strong>${nombre}</strong>,</p>
+      <p>Informe trimestral de cumplimiento LOPIVI para <strong>${entidad}</strong> - <strong>${trimestre}</strong>.</p>
+
+      <div class="success">
+        <h4>📊 Estado de cumplimiento: ${estadoCumplimiento}%</h4>
+        <p>Su entidad mantiene un excelente nivel de protección.</p>
+      </div>
+
+      <h3>Resumen del trimestre:</h3>
+      <ul>
+        <li><strong>Incidentes gestionados:</strong> ${incidentes}</li>
+        <li><strong>Actualizaciones aplicadas:</strong> ${actualizaciones.length}</li>
+        <li><strong>Estado delegado:</strong> Certificado y activo</li>
+        <li><strong>Plan de protección:</strong> Actualizado</li>
+      </ul>
+
+      <h3>Actualizaciones realizadas:</h3>
+      <ul>
+        ${actualizaciones.map(act => `<li>${act}</li>`).join('')}
+      </ul>
+
+      <div style="text-align: center;">
+        <a href="https://custodia360.es/informes" class="button">Ver Informe Completo</a>
+      </div>
+
+      <p><strong>Próximo informe:</strong> En 3 meses</p>
+    `;
+
+    return await resend.emails.send({
+      from: FROM_EMAIL,
+      to: email,
+      subject: `📋 Informe trimestral - ${entidad} (${trimestre})`,
+      html: generateEmailHTML('Informe trimestral', content)
+    });
+  },
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
 
   // Documentación solicitada
   async enviarDocumentacionSolicitada(email: string, entidad: string, tipoDocumentacion: string, mensajePersonalizado?: string) {
@@ -503,7 +669,11 @@ const emailTemplates = {
       ${mensajePersonalizado ? `<p>${mensajePersonalizado}</p>` : '<p>Adjuntamos la documentación LOPIVI solicitada.</p>'}
 
       <div class="success">
+<<<<<<< HEAD
         <h4>Documentación: ${tipoDocumentacion}</h4>
+=======
+        <h4>📁 Documentación: ${tipoDocumentacion}</h4>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>Toda la documentación está actualizada y validada legalmente.</p>
       </div>
 
@@ -530,7 +700,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Documentación LOPIVI - ${entidad}`,
+=======
+      subject: `📄 Documentación LOPIVI - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Documentación solicitada', content)
     });
   },
@@ -539,7 +713,11 @@ const emailTemplates = {
   async enviarInformeEmergenciaInspeccion(email: string, entidad: string, motivo: string, fecha: string) {
     const content = `
       <div class="warning">
+<<<<<<< HEAD
         <h2>Informe de Emergencia para Inspección</h2>
+=======
+        <h2>🚨 Informe de Emergencia para Inspección</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p><strong>Entidad:</strong> ${entidad}</p>
         <p><strong>Motivo:</strong> ${motivo}</p>
         <p><strong>Fecha:</strong> ${fecha}</p>
@@ -548,22 +726,39 @@ const emailTemplates = {
       <h3>Estado de Cumplimiento LOPIVI:</h3>
       <div class="success">
         <ul>
+<<<<<<< HEAD
           <li><strong>Delegado de Protección:</strong> Certificado y activo</li>
           <li><strong>Plan de Protección:</strong> Vigente y actualizado</li>
           <li><strong>Formación Personal:</strong> Completada</li>
           <li><strong>Protocolos:</strong> Implementados</li>
           <li><strong>Documentación:</strong> Completa y disponible</li>
+=======
+          <li>✅ <strong>Delegado de Protección:</strong> Certificado y activo</li>
+          <li>✅ <strong>Plan de Protección:</strong> Vigente y actualizado</li>
+          <li>✅ <strong>Formación Personal:</strong> Completada</li>
+          <li>✅ <strong>Protocolos:</strong> Implementados</li>
+          <li>✅ <strong>Documentación:</strong> Completa y disponible</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         </ul>
       </div>
 
       <h3>Documentación disponible para inspección:</h3>
       <ul>
+<<<<<<< HEAD
         <li>Plan de Protección específico</li>
         <li>Certificados de delegados</li>
         <li>Protocolos de actuación</li>
         <li>Registro de formación</li>
         <li>Informes de cumplimiento</li>
         <li>Código de conducta</li>
+=======
+        <li>📄 Plan de Protección específico</li>
+        <li>🎓 Certificados de delegados</li>
+        <li>📋 Protocolos de actuación</li>
+        <li>📚 Registro de formación</li>
+        <li>📊 Informes de cumplimiento</li>
+        <li>📝 Código de conducta</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </ul>
 
       <div class="success">
@@ -579,7 +774,11 @@ const emailTemplates = {
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
+<<<<<<< HEAD
       subject: `Informe emergencia inspección - ${entidad}`,
+=======
+      subject: `🚨 Informe emergencia inspección - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Informe de emergencia', content)
     });
   },
@@ -588,7 +787,11 @@ const emailTemplates = {
   async enviarPaqueteUrgente(emailContratante: string, emailAdministrativo: string, entidad: string, motivo: string) {
     const content = `
       <div class="warning">
+<<<<<<< HEAD
         <h2>Paquete Urgente LOPIVI</h2>
+=======
+        <h2>📦 Paquete Urgente LOPIVI</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p><strong>Entidad:</strong> ${entidad}</p>
         <p><strong>Motivo:</strong> ${motivo}</p>
       </div>
@@ -597,11 +800,19 @@ const emailTemplates = {
 
       <h3>Contenido del paquete:</h3>
       <ul>
+<<<<<<< HEAD
         <li>Plan de Protección completo</li>
         <li>Certificados originales</li>
         <li>Protocolos impresos</li>
         <li>Manual de implementación</li>
         <li>Backup digital</li>
+=======
+        <li>📄 Plan de Protección completo</li>
+        <li>🎓 Certificados originales</li>
+        <li>📋 Protocolos impresos</li>
+        <li>📚 Manual de implementación</li>
+        <li>💿 Backup digital</li>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       </ul>
 
       <div class="success">
@@ -620,14 +831,22 @@ const emailTemplates = {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: emailContratante,
+<<<<<<< HEAD
       subject: `Paquete urgente enviado - ${entidad}`,
+=======
+      subject: `📦 Paquete urgente enviado - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Paquete urgente', content)
     });
 
     return await resend.emails.send({
       from: FROM_EMAIL,
       to: emailAdministrativo,
+<<<<<<< HEAD
       subject: `Paquete urgente enviado - ${entidad}`,
+=======
+      subject: `📦 Paquete urgente enviado - ${entidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
       html: generateEmailHTML('Paquete urgente', content)
     });
   }
@@ -636,10 +855,17 @@ const emailTemplates = {
 // Export para compatibilidad con código existente
 export const professionalEmailTemplates = {
   bienvenidaContratante: {
+<<<<<<< HEAD
     subject: (data: any) => `Contratación Custodia360 completada - ${data.nombreEntidad}`,
     html: (data: any) => generateEmailHTML('Contratación completada', `
       <div class="success">
         <h2>Contratación completada con éxito</h2>
+=======
+    subject: (data: any) => `✅ Contratación Custodia360 completada - ${data.nombreEntidad}`,
+    html: (data: any) => generateEmailHTML('Contratación completada', `
+      <div class="success">
+        <h2>¡Contratación completada con éxito!</h2>
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
         <p>Estimado/a <strong>${data.nombreContratante}</strong>,</p>
         <p>Su contratación para <strong>${data.nombreEntidad}</strong> ha sido procesada correctamente.</p>
       </div>
@@ -647,20 +873,32 @@ export const professionalEmailTemplates = {
     `)
   },
   asignacionDelegado: {
+<<<<<<< HEAD
     subject: (data: any) => `Asignación Delegado de Protección - ${data.nombreEntidad}`,
+=======
+    subject: (data: any) => `🎓 Asignación Delegado de Protección - ${data.nombreEntidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
     html: (data: any) => generateEmailHTML('Asignación de Delegado', `
       <p>Estimado/a <strong>${data.nombreDelegado}</strong>,</p>
       <p>Ha sido asignado como Delegado de Protección para <strong>${data.nombreEntidad}</strong>.</p>
     `)
   },
   documentacionLista: {
+<<<<<<< HEAD
     subject: (data: any) => `Documentación LOPIVI lista - ${data.nombreEntidad}`,
+=======
+    subject: (data: any) => `📄 Documentación LOPIVI lista - ${data.nombreEntidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
     html: (data: any) => generateEmailHTML('Documentación lista', `
       <p>La documentación LOPIVI de <strong>${data.nombreEntidad}</strong> está lista.</p>
     `)
   },
   credencialesAcceso: {
+<<<<<<< HEAD
     subject: (data: any) => `Credenciales de acceso - ${data.nombreEntidad}`,
+=======
+    subject: (data: any) => `🔑 Credenciales de acceso - ${data.nombreEntidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
     html: (data: any) => generateEmailHTML('Credenciales de acceso', `
       <p>Sus credenciales de acceso para <strong>${data.nombreEntidad}</strong>:</p>
       <ul>
@@ -670,19 +908,31 @@ export const professionalEmailTemplates = {
     `)
   },
   checkupSatisfaccion: {
+<<<<<<< HEAD
     subject: (data: any) => `Check-up y satisfacción - ${data.nombreEntidad}`,
+=======
+    subject: (data: any) => `📊 Check-up y satisfacción - ${data.nombreEntidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
     html: (data: any) => generateEmailHTML('Check-up de satisfacción', `
       <p>Check-up de <strong>${data.nombreEntidad}</strong> completado.</p>
     `)
   },
   certificacionCompletada: {
+<<<<<<< HEAD
     subject: (data: any) => `Certificación completada - ${data.nombreEntidad}`,
+=======
+    subject: (data: any) => `🏆 Certificación completada - ${data.nombreEntidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
     html: (data: any) => generateEmailHTML('Certificación completada', `
       <p>La certificación de <strong>${data.nombreDelegado}</strong> para <strong>${data.nombreEntidad}</strong> ha sido completada.</p>
     `)
   },
   notificacionCertificacionContratante: {
+<<<<<<< HEAD
     subject: (data: any) => `Sistema LOPIVI operativo - ${data.nombreEntidad}`,
+=======
+    subject: (data: any) => `🎯 Sistema LOPIVI operativo - ${data.nombreEntidad}`,
+>>>>>>> f6677eec3aa575fb9fe8aa00ffe1ab2e06844d4b
     html: (data: any) => generateEmailHTML('Sistema operativo', `
       <p>El sistema LOPIVI de <strong>${data.nombreEntidad}</strong> está completamente operativo.</p>
     `)
