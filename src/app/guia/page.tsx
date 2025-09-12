@@ -19,9 +19,21 @@ export default function GuiaPage() {
       const pageHeight = doc.internal.pageSize.getHeight()
       let yPosition = 20
 
+      // Logo Custodia360 con C en azul
+      const logoSize = 12
+      const logoX = pageWidth / 2 - logoSize / 2
+      const logoY = yPosition - 5
+      doc.setFillColor(37, 99, 235) // Azul Custodia360
+      doc.rect(logoX, logoY, logoSize, logoSize, 'F')
+      doc.setTextColor(255, 255, 255) // Blanco
+      doc.setFontSize(16)
+      doc.text('C', pageWidth / 2, logoY + 8, { align: 'center' })
+
+      yPosition += 15
+
       // Título principal con color
       doc.setFontSize(24)
-      doc.setTextColor(234, 88, 12) // Color naranja Custodia360
+      doc.setTextColor(37, 99, 235) // Color azul Custodia360
       doc.text('CUSTODIA360', pageWidth / 2, yPosition, { align: 'center' })
 
       yPosition += 15
@@ -32,18 +44,18 @@ export default function GuiaPage() {
       yPosition += 10
       doc.setFontSize(12)
       doc.setTextColor(100, 100, 100)
-      doc.text('Manual Técnico Completo - 47 Páginas', pageWidth / 2, yPosition, { align: 'center' })
+      doc.text('Manual Técnico Completo - 35 Páginas', pageWidth / 2, yPosition, { align: 'center' })
 
       // Línea separadora
       yPosition += 10
-      doc.setDrawColor(234, 88, 12)
+      doc.setDrawColor(37, 99, 235)
       doc.setLineWidth(0.5)
       doc.line(20, yPosition, pageWidth - 20, yPosition)
 
       // Contenido principal
       yPosition += 15
       doc.setFontSize(16)
-      doc.setTextColor(234, 88, 12)
+      doc.setTextColor(37, 99, 235)
       doc.text('¿Por qué esta guía es tan compleja?', 20, yPosition)
 
       yPosition += 10
@@ -126,13 +138,13 @@ export default function GuiaPage() {
       const lineasResumen = doc.splitTextToSize(resumen, pageWidth - 40)
       doc.text(lineasResumen, 20, yPosition)
 
-      // Agregar más páginas con contenido detallado
-      for (let i = 2; i <= 5; i++) {
+      // Agregar más páginas con contenido detallado para llegar a 35 páginas
+      for (let i = 2; i <= 32; i++) {
         doc.addPage()
         yPosition = 20
 
         doc.setFontSize(16)
-        doc.setTextColor(234, 88, 12)
+        doc.setTextColor(37, 99, 235)
         doc.text(`Sección ${i}: Detalles Técnicos`, 20, yPosition)
 
         yPosition += 10
@@ -168,7 +180,7 @@ export default function GuiaPage() {
       yPosition = pageHeight / 2 - 30
 
       doc.setFontSize(18)
-      doc.setTextColor(234, 88, 12)
+      doc.setTextColor(37, 99, 235)
       doc.text('¿Listo para proteger tu entidad?', pageWidth / 2, yPosition, { align: 'center' })
 
       yPosition += 10
@@ -198,6 +210,18 @@ export default function GuiaPage() {
       const pageHeight = doc.internal.pageSize.getHeight()
       let yPosition = 20
 
+      // Logo Custodia360 con C en azul
+      const logoSize = 12
+      const logoX = pageWidth / 2 - logoSize / 2
+      const logoY = yPosition - 5
+      doc.setFillColor(37, 99, 235) // Azul Custodia360
+      doc.rect(logoX, logoY, logoSize, logoSize, 'F')
+      doc.setTextColor(255, 255, 255) // Blanco
+      doc.setFontSize(16)
+      doc.text('C', pageWidth / 2, logoY + 8, { align: 'center' })
+
+      yPosition += 15
+
       // Título principal con color
       doc.setFontSize(24)
       doc.setTextColor(37, 99, 235) // Color azul
@@ -211,7 +235,7 @@ export default function GuiaPage() {
       yPosition += 10
       doc.setFontSize(12)
       doc.setTextColor(100, 100, 100)
-      doc.text('Manual Especializado Completo - 62 Páginas', pageWidth / 2, yPosition, { align: 'center' })
+      doc.text('Manual Especializado Completo - 39 Páginas', pageWidth / 2, yPosition, { align: 'center' })
 
       // Línea separadora
       yPosition += 10
@@ -307,8 +331,8 @@ export default function GuiaPage() {
         yPosition += 7
       })
 
-      // Agregar más páginas
-      for (let i = 2; i <= 8; i++) {
+      // Agregar más páginas para llegar a 39 páginas
+      for (let i = 2; i <= 36; i++) {
         doc.addPage()
         yPosition = 20
 
@@ -404,7 +428,7 @@ export default function GuiaPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-700 mb-2">Guía de Implementación LOPIVI</h3>
-              <p className="text-gray-600 mb-6">Manual completo de 47 páginas</p>
+              <p className="text-gray-600 mb-6">Manual completo de 35 páginas</p>
               <button
                 onClick={() => (window as any).generateLopiviPDF?.()}
                 className="w-full bg-blue-900 text-white py-3 rounded-lg font-bold hover:bg-blue-800 transition-colors"
@@ -421,7 +445,7 @@ export default function GuiaPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-700 mb-2">Guía Plan de Protección</h3>
-              <p className="text-gray-600 mb-6">Manual completo de 62 páginas</p>
+              <p className="text-gray-600 mb-6">Manual completo de 39 páginas</p>
               <button
                 onClick={() => (window as any).generateProtectionPlanPDF?.()}
                 className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
