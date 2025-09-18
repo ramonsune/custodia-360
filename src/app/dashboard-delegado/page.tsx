@@ -33,6 +33,10 @@ export default function DashboardDelegado() {
   const [modalPersonalCompleto, setModalPersonalCompleto] = useState(false)
   const [tipoEmergenciaSeleccionado, setTipoEmergenciaSeleccionado] = useState<string | null>(null)
   const [modalNotificaciones, setModalNotificaciones] = useState(false)
+  const [modalFamilias, setModalFamilias] = useState(false)
+  const [modalBiblioteca, setModalBiblioteca] = useState(false)
+  const [tipoComunicacionSeleccionado, setTipoComunicacionSeleccionado] = useState<string | null>(null)
+  const [categoriaDocumentoSeleccionada, setCategoriaDocumentoSeleccionada] = useState<string | null>(null)
 
   // Nuevos modales para estadísticas
   const [modalCasoNuevo, setModalCasoNuevo] = useState(false)
@@ -676,6 +680,166 @@ export default function DashboardDelegado() {
     // En una app real, esto actualizaría el estado
   }
 
+  // Tipos de comunicación con familias
+  const tiposComunicacionFamilias = [
+    {
+      id: 'cambio-ley',
+      titulo: 'Cambio de Normativa LOPIVI',
+      descripcion: 'Informar sobre actualizaciones legales que afectan la protección',
+      color: 'bg-red-600',
+      urgencia: 'Alta',
+      template: 'Estimadas familias,\n\nNos dirigimos a ustedes para informarles sobre importantes cambios en la normativa LOPIVI que entran en vigor el [FECHA]...',
+      destinatarios: ['Todas las familias', 'Tutores legales', 'Familias de menores específicos'],
+      adjuntos: ['Nueva normativa PDF', 'Resumen de cambios', 'Protocolo actualizado']
+    },
+    {
+      id: 'cambio-procedimiento',
+      titulo: 'Actualización de Procedimientos',
+      descripcion: 'Comunicar modificaciones en protocolos internos de protección',
+      color: 'bg-orange-600',
+      urgencia: 'Media',
+      template: 'Queridas familias,\n\nLes comunicamos que hemos actualizado nuestros procedimientos de protección infantil para mejorar la seguridad...',
+      destinatarios: ['Familias activas', 'Nuevas familias', 'Familias por actividad'],
+      adjuntos: ['Nuevo protocolo', 'Manual familiar', 'Código de conducta']
+    },
+    {
+      id: 'nuevo-delegado',
+      titulo: 'Cambio de Delegado de Protección',
+      descripcion: 'Presentar nuevo delegado principal o suplente',
+      color: 'bg-blue-600',
+      urgencia: 'Alta',
+      template: 'Estimadas familias,\n\nNos complace presentarles a [NOMBRE], nuestro nuevo Delegado de Protección, quien asume las responsabilidades de...',
+      destinatarios: ['Todas las familias', 'Consejo familiar', 'Representantes de padres'],
+      adjuntos: ['Presentación delegado', 'Certificaciones', 'Información de contacto']
+    },
+    {
+      id: 'incidente-resuelto',
+      titulo: 'Comunicación Post-Incidente',
+      descripcion: 'Informar sobre resolución de incidentes que afectan la comunidad',
+      color: 'bg-purple-600',
+      urgencia: 'Crítica',
+      template: 'Familias,\n\nEn cumplimiento de nuestro compromiso con la transparencia, les informamos sobre la resolución de un incidente...',
+      destinatarios: ['Familias afectadas', 'Toda la comunidad', 'Familias del grupo específico'],
+      adjuntos: ['Informe público', 'Medidas tomadas', 'Plan de prevención']
+    },
+    {
+      id: 'formacion-padres',
+      titulo: 'Formación en Protección Familiar',
+      descripcion: 'Invitar a talleres y formaciones sobre protección infantil',
+      color: 'bg-green-600',
+      urgencia: 'Baja',
+      template: 'Queridas familias,\n\nLes invitamos a participar en nuestro programa de formación familiar en protección infantil...',
+      destinatarios: ['Familias interesadas', 'Nuevas familias', 'Voluntarios familiares'],
+      adjuntos: ['Programa formación', 'Calendario', 'Material informativo']
+    },
+    {
+      id: 'evaluacion-anual',
+      titulo: 'Evaluación Anual de Protección',
+      descripcion: 'Solicitar feedback sobre efectividad del plan de protección',
+      color: 'bg-teal-600',
+      urgencia: 'Media',
+      template: 'Estimadas familias,\n\nComo parte de nuestro compromiso con la mejora continua, solicitamos su colaboración en la evaluación anual...',
+      destinatarios: ['Familias colaboradoras', 'Consejo familiar', 'Todas las familias'],
+      adjuntos: ['Encuesta', 'Informe anterior', 'Plan de mejoras']
+    },
+    {
+      id: 'emergencia-comunicacion',
+      titulo: 'Comunicación de Emergencia',
+      descripcion: 'Alertas urgentes sobre situaciones que requieren acción inmediata',
+      color: 'bg-red-700',
+      urgencia: 'Crítica',
+      template: 'COMUNICACIÓN URGENTE\n\nFamilias, les informamos sobre una situación que requiere su atención inmediata...',
+      destinatarios: ['Todas las familias', 'Familias específicas', 'Contactos de emergencia'],
+      adjuntos: ['Protocolo emergencia', 'Instrucciones', 'Contactos útiles']
+    },
+    {
+      id: 'newsletter-trimestral',
+      titulo: 'Boletín Trimestral de Protección',
+      descripcion: 'Información periódica sobre actividades y logros en protección',
+      color: 'bg-indigo-600',
+      urgencia: 'Baja',
+      template: 'Queridas familias,\n\nCompartimos con ustedes nuestro boletín trimestral con las novedades en protección infantil...',
+      destinatarios: ['Familias suscritas', 'Todas las familias', 'Comunidad educativa'],
+      adjuntos: ['Boletín PDF', 'Fotos actividades', 'Próximos eventos']
+    }
+  ]
+
+  // Biblioteca LOPIVI - Categorías de documentos
+  const categoriasDocumentosLOPIVI = [
+    {
+      id: 'normativas',
+      titulo: 'Normativas Vigentes',
+      descripcion: 'Leyes y reglamentos LOPIVI actualizados',
+      color: 'bg-red-600',
+      documentos: [
+        { nombre: 'Ley Orgánica 8/2021 LOPIVI', tipo: 'PDF', actualizado: '2025-01-15', tamaño: '2.3 MB', version: '1.2' },
+        { nombre: 'Real Decreto 1016/2024', tipo: 'PDF', actualizado: '2024-12-20', tamaño: '1.8 MB', version: '1.0' },
+        { nombre: 'Instrucción Ministerial 2025/001', tipo: 'PDF', actualizado: '2025-02-01', tamaño: '890 KB', version: '1.1' },
+        { nombre: 'Jurisprudencia Reciente', tipo: 'PDF', actualizado: '2025-09-10', tamaño: '3.2 MB', version: '2.3' }
+      ]
+    },
+    {
+      id: 'protocolos',
+      titulo: 'Protocolos de Actuación',
+      descripcion: 'Procedimientos específicos por tipo de situación',
+      color: 'bg-orange-600',
+      documentos: [
+        { nombre: 'Protocolo Detección Abuso', tipo: 'PDF', actualizado: '2025-08-15', tamaño: '1.5 MB', version: '3.1' },
+        { nombre: 'Protocolo Comunicación Familias', tipo: 'PDF', actualizado: '2025-07-22', tamaño: '1.2 MB', version: '2.0' },
+        { nombre: 'Protocolo Emergencias', tipo: 'PDF', actualizado: '2025-09-05', tamaño: '2.1 MB', version: '1.8' },
+        { nombre: 'Protocolo Formación Personal', tipo: 'PDF', actualizado: '2025-06-30', tamaño: '1.7 MB', version: '2.2' }
+      ]
+    },
+    {
+      id: 'plantillas',
+      titulo: 'Plantillas y Formularios',
+      descripcion: 'Documentos oficiales listos para usar',
+      color: 'bg-blue-600',
+      documentos: [
+        { nombre: 'Plan de Protección Tipo', tipo: 'DOCX', actualizado: '2025-08-20', tamaño: '456 KB', version: '4.0' },
+        { nombre: 'Formulario Incidencias', tipo: 'PDF', actualizado: '2025-09-01', tamaño: '234 KB', version: '1.5' },
+        { nombre: 'Carta Familias Plantilla', tipo: 'DOCX', actualizado: '2025-07-10', tamaño: '123 KB', version: '2.1' },
+        { nombre: 'Certificado Delegado', tipo: 'PDF', actualizado: '2025-08-05', tamaño: '678 KB', version: '1.3' }
+      ]
+    },
+    {
+      id: 'guias',
+      titulo: 'Guías y Manuales',
+      descripcion: 'Documentación técnica y explicativa',
+      color: 'bg-green-600',
+      documentos: [
+        { nombre: 'Guía Implementación LOPIVI', tipo: 'PDF', actualizado: '2025-05-15', tamaño: '4.2 MB', version: '2.0' },
+        { nombre: 'Manual Delegado Principal', tipo: 'PDF', actualizado: '2025-07-01', tamaño: '3.8 MB', version: '3.1' },
+        { nombre: 'Manual Delegado Suplente', tipo: 'PDF', actualizado: '2025-07-01', tamaño: '2.9 MB', version: '3.1' },
+        { nombre: 'Guía Buenas Prácticas', tipo: 'PDF', actualizado: '2025-08-10', tamaño: '2.5 MB', version: '1.7' }
+      ]
+    },
+    {
+      id: 'formacion',
+      titulo: 'Material de Formación',
+      descripcion: 'Recursos educativos y de capacitación',
+      color: 'bg-purple-600',
+      documentos: [
+        { nombre: 'Curso LOPIVI Completo', tipo: 'ZIP', actualizado: '2025-06-20', tamaño: '125 MB', version: '2.5' },
+        { nombre: 'Presentaciones Formación', tipo: 'ZIP', actualizado: '2025-08-25', tamaño: '67 MB', version: '1.8' },
+        { nombre: 'Test Evaluación LOPIVI', tipo: 'PDF', actualizado: '2025-09-01', tamaño: '1.1 MB', version: '1.4' },
+        { nombre: 'Videos Explicativos', tipo: 'LINK', actualizado: '2025-08-30', tamaño: 'Online', version: '1.2' }
+      ]
+    },
+    {
+      id: 'auditoria',
+      titulo: 'Auditoría y Cumplimiento',
+      descripcion: 'Herramientas de evaluación y control',
+      color: 'bg-indigo-600',
+      documentos: [
+        { nombre: 'Checklist Cumplimiento', tipo: 'XLSX', actualizado: '2025-09-10', tamaño: '234 KB', version: '2.3' },
+        { nombre: 'Plantilla Auditoría Interna', tipo: 'DOCX', actualizado: '2025-08-15', tamaño: '456 KB', version: '1.9' },
+        { nombre: 'Indicadores KPI LOPIVI', tipo: 'XLSX', actualizado: '2025-07-25', tamaño: '189 KB', version: '1.6' },
+        { nombre: 'Informe Anual Tipo', tipo: 'DOCX', actualizado: '2025-06-05', tamaño: '678 KB', version: '2.0' }
+      ]
+    }
+  ]
+
   // Opciones para documentación
   const tiposDocumentacion = [
     'Plan de Protección Personalizado',
@@ -935,7 +1099,7 @@ export default function DashboardDelegado() {
             <h3 className="text-xl font-bold text-gray-900">Acciones Principales</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
             {/* Botón Enviar Documentación */}
             <button
               onClick={() => setModalEnviarDoc(true)}
@@ -982,6 +1146,28 @@ export default function DashboardDelegado() {
                     {conteoNotificaciones.total}
                   </div>
                 )}
+              </div>
+            </button>
+
+            {/* Botón Familias */}
+            <button
+              onClick={() => setModalFamilias(true)}
+              className="bg-pink-600 hover:bg-pink-700 text-white p-6 rounded-xl transition-all hover:scale-105 shadow-lg"
+            >
+              <div className="text-center">
+                <h4 className="font-bold text-lg mb-2">Familias</h4>
+                <p className="text-sm text-pink-100">Comunicación con familias y tutores</p>
+              </div>
+            </button>
+
+            {/* Botón Biblioteca LOPIVI */}
+            <button
+              onClick={() => setModalBiblioteca(true)}
+              className="bg-amber-600 hover:bg-amber-700 text-white p-6 rounded-xl transition-all hover:scale-105 shadow-lg"
+            >
+              <div className="text-center">
+                <h4 className="font-bold text-lg mb-2">Biblioteca LOPIVI</h4>
+                <p className="text-sm text-amber-100">Documentos y normativas actualizadas</p>
               </div>
             </button>
           </div>
@@ -2024,6 +2210,287 @@ export default function DashboardDelegado() {
                 Cerrar
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Comunicación con Familias */}
+      {modalFamilias && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 max-w-6xl w-full mx-4 max-h-screen overflow-y-auto">
+            <h3 className="text-xl font-bold mb-4">Comunicación con Familias</h3>
+            <p className="text-gray-600 mb-6">Selecciona el tipo de comunicación que necesitas enviar a las familias:</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {tiposComunicacionFamilias.map((tipo) => (
+                <button
+                  key={tipo.id}
+                  onClick={() => setTipoComunicacionSeleccionado(tipo.id)}
+                  className={`${tipo.color} hover:opacity-90 text-white p-4 rounded-xl transition-all text-left relative`}
+                >
+                  <div className="absolute top-3 right-3">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      tipo.urgencia === 'Crítica' ? 'bg-red-200 text-red-800' :
+                      tipo.urgencia === 'Alta' ? 'bg-orange-200 text-orange-800' :
+                      tipo.urgencia === 'Media' ? 'bg-yellow-200 text-yellow-800' :
+                      'bg-green-200 text-green-800'
+                    }`}>
+                      {tipo.urgencia}
+                    </span>
+                  </div>
+                  <h4 className="font-bold text-lg mb-2 pr-16">{tipo.titulo}</h4>
+                  <p className="text-sm opacity-90">{tipo.descripcion}</p>
+                </button>
+              ))}
+            </div>
+
+            <div className="flex justify-end mt-6">
+              <button
+                onClick={() => setModalFamilias(false)}
+                className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Detalle Comunicación Familias */}
+      {tipoComunicacionSeleccionado && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60]">
+          <div className="bg-white rounded-xl p-6 max-w-4xl w-full mx-4 max-h-screen overflow-y-auto">
+            {(() => {
+              const tipo = tiposComunicacionFamilias.find(t => t.id === tipoComunicacionSeleccionado)
+              return tipo ? (
+                <>
+                  <div className="flex items-center mb-4">
+                    <div className={`w-12 h-12 ${tipo.color} rounded-full flex items-center justify-center mr-4`}>
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-2-2V10a2 2 0 012-2h8z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold">{tipo.titulo}</h3>
+                      <p className="text-gray-600">{tipo.descripcion}</p>
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      tipo.urgencia === 'Crítica' ? 'bg-red-100 text-red-800' :
+                      tipo.urgencia === 'Alta' ? 'bg-orange-100 text-orange-800' :
+                      tipo.urgencia === 'Media' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-green-100 text-green-800'
+                    }`}>
+                      {tipo.urgencia}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    {/* Destinatarios */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Destinatarios:</label>
+                      <div className="space-y-2">
+                        {tipo.destinatarios.map((destinatario, index) => (
+                          <label key={index} className="flex items-center">
+                            <input type="checkbox" className="mr-2" />
+                            <span className="text-sm">{destinatario}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Adjuntos disponibles */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Adjuntos disponibles:</label>
+                      <div className="space-y-2">
+                        {tipo.adjuntos.map((adjunto, index) => (
+                          <label key={index} className="flex items-center">
+                            <input type="checkbox" className="mr-2" />
+                            <span className="text-sm">{adjunto}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Template del mensaje */}
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Mensaje (editable):</label>
+                    <textarea
+                      defaultValue={tipo.template}
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 h-32"
+                      placeholder="Personaliza el mensaje..."
+                    />
+                  </div>
+
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                    <p className="text-sm text-blue-800">
+                      <strong>Recordatorio:</strong> Todas las comunicaciones con familias quedan registradas para auditorías LOPIVI.
+                      Asegúrate de que el contenido cumple con los estándares de transparencia requeridos.
+                    </p>
+                  </div>
+
+                  <div className="flex justify-end gap-2">
+                    <button
+                      onClick={() => setTipoComunicacionSeleccionado(null)}
+                      className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                    >
+                      Volver
+                    </button>
+                    <button
+                      onClick={() => {
+                        console.log(`Enviando comunicación ${tipo.titulo} a familias`)
+                        setTipoComunicacionSeleccionado(null)
+                        setModalFamilias(false)
+                      }}
+                      className="bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors"
+                    >
+                      Enviar Comunicación
+                    </button>
+                  </div>
+                </>
+              ) : null
+            })()}
+          </div>
+        </div>
+      )}
+
+      {/* Modal Biblioteca LOPIVI */}
+      {modalBiblioteca && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 max-w-7xl w-full mx-4 max-h-screen overflow-y-auto">
+            <h3 className="text-xl font-bold mb-4">Biblioteca LOPIVI</h3>
+            <p className="text-gray-600 mb-6">Accede a toda la documentación LOPIVI organizada por categorías:</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {categoriasDocumentosLOPIVI.map((categoria) => (
+                <button
+                  key={categoria.id}
+                  onClick={() => setCategoriaDocumentoSeleccionada(categoria.id)}
+                  className={`${categoria.color} hover:opacity-90 text-white p-4 rounded-xl transition-all text-left`}
+                >
+                  <h4 className="font-bold text-lg mb-2">{categoria.titulo}</h4>
+                  <p className="text-sm opacity-90 mb-3">{categoria.descripcion}</p>
+                  <div className="text-xs opacity-75">
+                    {categoria.documentos.length} documentos disponibles
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mt-6">
+              <p className="text-sm text-amber-800">
+                <strong>📚 Biblioteca siempre actualizada:</strong> Todos los documentos se mantienen al día con las últimas normativas.
+                Las versiones anteriores se archivan automáticamente para referencia histórica.
+              </p>
+            </div>
+
+            <div className="flex justify-end mt-6">
+              <button
+                onClick={() => setModalBiblioteca(false)}
+                className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Detalle Categoría Documentos */}
+      {categoriaDocumentoSeleccionada && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60]">
+          <div className="bg-white rounded-xl p-6 max-w-5xl w-full mx-4 max-h-screen overflow-y-auto">
+            {(() => {
+              const categoria = categoriasDocumentosLOPIVI.find(c => c.id === categoriaDocumentoSeleccionada)
+              return categoria ? (
+                <>
+                  <div className="flex items-center mb-6">
+                    <div className={`w-12 h-12 ${categoria.color} rounded-full flex items-center justify-center mr-4`}>
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">{categoria.titulo}</h3>
+                      <p className="text-gray-600">{categoria.descripcion}</p>
+                    </div>
+                  </div>
+
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse border border-gray-300">
+                      <thead>
+                        <tr className="bg-gray-50">
+                          <th className="border border-gray-300 p-3 text-left">Documento</th>
+                          <th className="border border-gray-300 p-3 text-left">Tipo</th>
+                          <th className="border border-gray-300 p-3 text-left">Actualizado</th>
+                          <th className="border border-gray-300 p-3 text-left">Versión</th>
+                          <th className="border border-gray-300 p-3 text-left">Tamaño</th>
+                          <th className="border border-gray-300 p-3 text-left">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {categoria.documentos.map((doc, index) => (
+                          <tr key={index} className="hover:bg-gray-50">
+                            <td className="border border-gray-300 p-3 font-medium">{doc.nombre}</td>
+                            <td className="border border-gray-300 p-3">
+                              <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                doc.tipo === 'PDF' ? 'bg-red-100 text-red-800' :
+                                doc.tipo === 'DOCX' ? 'bg-blue-100 text-blue-800' :
+                                doc.tipo === 'XLSX' ? 'bg-green-100 text-green-800' :
+                                doc.tipo === 'ZIP' ? 'bg-purple-100 text-purple-800' :
+                                'bg-gray-100 text-gray-800'
+                              }`}>
+                                {doc.tipo}
+                              </span>
+                            </td>
+                            <td className="border border-gray-300 p-3 text-sm text-gray-600">{doc.actualizado}</td>
+                            <td className="border border-gray-300 p-3 text-sm">v{doc.version}</td>
+                            <td className="border border-gray-300 p-3 text-sm text-gray-600">{doc.tamaño}</td>
+                            <td className="border border-gray-300 p-3">
+                              <div className="flex gap-2">
+                                <button className="bg-blue-100 text-blue-800 px-3 py-1 rounded text-xs hover:bg-blue-200 transition-colors">
+                                  Ver
+                                </button>
+                                <button className="bg-green-100 text-green-800 px-3 py-1 rounded text-xs hover:bg-green-200 transition-colors">
+                                  Descargar
+                                </button>
+                                <button className="bg-purple-100 text-purple-800 px-3 py-1 rounded text-xs hover:bg-purple-200 transition-colors">
+                                  Compartir
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-6">
+                    <p className="text-sm text-green-800">
+                      <strong>📋 Uso responsable:</strong> Estos documentos son oficiales y están protegidos por derechos de autor.
+                      Úsalos únicamente para fines de cumplimiento LOPIVI en tu entidad.
+                    </p>
+                  </div>
+
+                  <div className="flex justify-end gap-2 mt-6">
+                    <button
+                      onClick={() => setCategoriaDocumentoSeleccionada(null)}
+                      className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                    >
+                      Volver
+                    </button>
+                    <button
+                      onClick={() => {
+                        console.log(`Descargando toda la categoría ${categoria.titulo}`)
+                      }}
+                      className="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors"
+                    >
+                      Descargar Todo
+                    </button>
+                  </div>
+                </>
+              ) : null
+            })()}
           </div>
         </div>
       )}
