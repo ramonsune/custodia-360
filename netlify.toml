@@ -1,0 +1,31 @@
+[build]
+  publish = "out"
+  command = "bun run build"
+
+[build.environment]
+  # Supabase Configuration
+  NEXT_PUBLIC_SUPABASE_URL = "https://gkoyqfusawhnobvkoijc.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdrb3lxZnVzYXdobm9idmtvaWpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyODMzOTQsImV4cCI6MjA3MTg1OTM5NH0.8PhAfdlfpiLih4_QqrfWRbn-gZ8eeWX7NaTGpO-9hyY"
+
+  # Resend Configuration
+  RESEND_API_KEY = "re_JdZMeZD4_5vVWRAKjkRwTpdUazQxVz99E"
+  RESEND_FROM_EMAIL = "noreply@custodia360.com"
+
+  # Next.js Configuration
+  NEXT_PUBLIC_APP_URL = "https://custodia360.es"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
