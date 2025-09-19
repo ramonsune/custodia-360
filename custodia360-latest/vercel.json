@@ -1,0 +1,12 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "bun run build",
+  "outputDirectory": ".next",
+  "installCommand": "bun install",
+  "devCommand": "bun run dev",
+  "regions": ["fra1"],
+  "env": {
+    "NODE_VERSION": "18",
+    "NEXT_TELEMETRY_DISABLED": "1"
+  }
+}
