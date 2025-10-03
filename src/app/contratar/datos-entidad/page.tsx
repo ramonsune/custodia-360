@@ -445,6 +445,7 @@ function DatosEntidadContent() {
                     <option value="Director">Director</option>
                     <option value="Gerente">Gerente</option>
                     <option value="Propietario">Propietario</option>
+                    <option value="RRHH">RRHH</option>
                   </select>
                 </div>
 

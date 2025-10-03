@@ -14,7 +14,6 @@ export default function DatosDelegadoPage() {
     emailDelegadoPrincipal: '',
     contraseñaDelegadoPrincipal: '',
     funcionDelegadoPrincipal: '',
-    experienciaPrevia: '',
     formacionPrevia: '',
     // Campos del suplente
     nombreDelegadoSuplente: '',
@@ -30,7 +29,7 @@ export default function DatosDelegadoPage() {
   const requiredFields = [
     'nombreDelegadoPrincipal', 'dniDelegadoPrincipal', 'fechaNacimientoDelegadoPrincipal',
     'telefonoDelegadoPrincipal', 'emailDelegadoPrincipal', 'contraseñaDelegadoPrincipal',
-    'funcionDelegadoPrincipal', 'experienciaPrevia'
+    'funcionDelegadoPrincipal'
   ]
 
   // Añadir campos requeridos del suplente si está activo
@@ -289,24 +288,7 @@ export default function DatosDelegadoPage() {
                   </select>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Experiencia con Menores *
-                  </label>
-                  <select
-                    value={formData.experienciaPrevia}
-                    onChange={(e) => handleInputChange('experienciaPrevia', e.target.value)}
-                    className="w-full px-4 py-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600 touch-manipulation"
-                    required
-                  >
-                    <option value="">Seleccionar experiencia</option>
-                    <option value="menos-1">Menos de 1 año</option>
-                    <option value="1-3">1-3 años</option>
-                    <option value="3-5">3-5 años</option>
-                    <option value="5-10">5-10 años</option>
-                    <option value="mas-10">Más de 10 años</option>
-                  </select>
-                </div>
+
 
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-2">

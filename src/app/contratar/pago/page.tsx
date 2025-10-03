@@ -136,7 +136,6 @@ export default function PagoPage() {
         emailDelegadoPrincipal: datosDelegado.emailDelegadoPrincipal || 'delegado@ejemplo.com',
         contraseñaDelegadoPrincipal: datosDelegado.contraseñaDelegadoPrincipal || 'delegado123',
         funcionDelegadoPrincipal: datosDelegado.funcionDelegadoPrincipal || 'Entrenador Principal',
-        experienciaPrevia: datosDelegado.experienciaPrevia || '3-5',
         formacionPrevia: datosDelegado.formacionPrevia || '',
 
         // Datos del delegado suplente (si existe)
