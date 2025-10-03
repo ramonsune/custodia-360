@@ -1,0 +1,39 @@
+[build]
+  command = "npm install && npm run build"
+  publish = ".next"
+
+# Next.js plugin for dynamic routes support
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  # Node.js version
+  NODE_VERSION = "18"
+  # Ensure NPM is used instead of Yarn
+  NPM_FLAGS = "--prefer-offline --no-audit"
+
+  # Supabase Configuration - COMPLETO
+  NEXT_PUBLIC_SUPABASE_URL = "https://gkoyqfusawhnobvkoijc.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdrb3lxZnVzYXdobm9idmtvaWpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyODMzOTQsImV4cCI6MjA3MTg1OTM5NH0.8PhAfdlfpiLih4_QqrfWRbn-gZ8eeWX7NaTGpO-9hyY"
+  SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdrb3lxZnVzYXdobm9idmtvaWpjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NjI4MzM5NCwiZXhwIjoyMDcxODU5Mzk0fQ.9oKkdWJsUEQaVXhOE4Uf4Nx6a0-8BZ5hNjdl_EyIJQM"
+
+  # Resend Configuration - ACTUALIZADO
+  RESEND_API_KEY = "re_JfPp939X_84TnwFXTiDRqMtUfdd2omgRA"
+  RESEND_FROM_EMAIL = "noreply@custodia360.es"
+
+  # Sistema Configuration
+  DEMO_MODE = "false"
+  NEXT_PUBLIC_APP_URL = "https://custodia360.es"
+  CRON_SECRET_TOKEN = "custodia360-cron-secret-2025"
+
+  # PDF Generation
+  PDFSHIFT_API_KEY = "sk_3f24779f1fb6b4fa0a2bf6bfe6d25019fa8a19c6"
+
+  # BOE Monitoring
+  BOE_MONITOREO_ACTIVO = "true"
+  BOE_FRECUENCIA_DIAS = "15"
+
+  # Audit System
+  AUDIT_RETENTION_YEARS = "5"
+  AUDIT_TIMEZONE = "Europe/Madrid"
+  LOPIVI_COMPLIANCE_MODE = "true"
