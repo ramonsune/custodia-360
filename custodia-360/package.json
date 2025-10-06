@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "next dev -H 0.0.0.0 -p 8080",
     "build": "next build",
-    "build:production": "node scripts/pre-build-check.js && SKIP_TYPE_CHECK=true DISABLE_ESLINT=true node scripts/validate-env.js && next build",
-    "build:netlify": "npm install && npm run build:production",
+    "build:production": "node scripts/netlify-check.js && node scripts/pre-build-check.js && SKIP_TYPE_CHECK=true DISABLE_ESLINT=true node scripts/validate-env.js && next build",
+    "build:netlify": "npm ci --legacy-peer-deps && npm run build:production",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "validate-env": "node scripts/validate-env.js",
+    "netlify-check": "node scripts/netlify-check.js",
     "postinstall": "node -e \"console.log('Dependencies installed successfully')\""
   },
   "dependencies": {

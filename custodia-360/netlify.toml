@@ -1,15 +1,16 @@
 [build]
-  # Updated build command for better compatibility
+  # Build command optimized for Netlify
   command = "npm ci --legacy-peer-deps && npm run build:production"
-  publish = ".next"
+  # For Next.js dynamic apps, don't specify publish directory
+  # publish = ".next"  # Removed - let Netlify auto-detect
 
 # Essential Next.js plugin for Netlify
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 [build.environment]
-  # Updated Node.js version for Next.js 15.5.0 and React 19
-  NODE_VERSION = "20"
+  # Node.js 18 LTS is recommended for Netlify
+  NODE_VERSION = "18"
   NODE_OPTIONS = "--max-old-space-size=8192"
 
   # Build optimizations for Netlify
@@ -53,19 +54,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# Optimized redirects for Next.js API routes
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+# Removed problematic redirects - Next.js dynamic apps handle this automatically
+# The @netlify/plugin-nextjs handles API routes and dynamic routes properly
 
-# Handle Next.js dynamic routes
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
-
-# Function configuration for better performance
-[functions]
-  node_bundler = "esbuild"
+# Function configuration removed - not needed for Next.js dynamic apps

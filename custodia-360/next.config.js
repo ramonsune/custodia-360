@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Dynamic Next.js app for Netlify - no output needed
+  // Dynamic Next.js app for Netlify
 
   // Build settings
   eslint: {
@@ -10,12 +10,12 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // Image optimization must be disabled for static export
+  // Image optimization for dynamic apps
   images: {
-    unoptimized: true,
+    unoptimized: true, // Required for Netlify deployment
   },
 
-  // Disable server-side features for static export
+  // React strict mode
   reactStrictMode: true,
 
   // Environment variables
@@ -46,10 +46,7 @@ const nextConfig = {
   // Increase timeout for static generation
   staticPageGenerationTimeout: 300,
 
-  // Ensure proper handling of dynamic imports
-  swcMinify: true,
-
-  // Disable experimental features that require server-side rendering
+  // Experimental features configuration
   experimental: {},
 }
 
