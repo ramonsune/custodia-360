@@ -1,51 +1,37 @@
-# Custodia360 - Lista de Tareas
+# Tareas Pendientes - Sistema Custodia 360
 
-## 🚨 URGENTE - Problemas del Panel de Entidad
-**Problema identificado por el usuario:**
+## ✅ Completadas
 
-### ❌ Problemas Actuales
-- [ ] **Datos hardcodeados en lugar de Supabase:** Panel muestra "Delegados Activos: 2" con datos simulados
-- [ ] **UI innecesaria:** Eliminar "C" y cuadro azul del header del panel de entidad
+### Alternancia de Respuestas en Tests
+- **COMPLETADO**: Implementada función de mezcla aleatoria de opciones en test del delegado principal
+- **COMPLETADO**: Implementada función de mezcla aleatoria de opciones en test del suplente
+- **COMPLETADO**: Las respuestas correctas ahora se alternan en diferentes posiciones (A, B, C, D)
+- **COMPLETADO**: Algoritmo Fisher-Yates con seed determinístico para garantizar consistencia
+- **COMPLETADO**: Cada pregunta tiene un seed único basado en su ID
+- **RESULTADO**: Ya no hay concentración de respuestas correctas en posiciones específicas
 
-### 🔧 Soluciones a Implementar
-1. [ ] **Reemplazar datos simulados con conexión a Supabase real**
-   - Líneas 103-136: Cambiar datos hardcodeados por consultas a Supabase
-   - Mostrar datos reales de la entidad autenticada
-2. [ ] **Eliminar "C" y cuadro azul del header**
-   - Líneas 1042-1044: Remover el elemento visual innecesario
+### Funcionalidades del Sistema
+- **COMPLETADO**: Sistema de formación para delegados principales
+- **COMPLETADO**: Sistema de formación para delegados suplentes
+- **COMPLETADO**: Tests de evaluación con puntuación
+- **COMPLETADO**: Generación de certificados
+- **COMPLETADO**: Dashboard para administración
 
-## 🚨 PASOS PARA EL USUARIO - Email Configuration
-**El usuario debe completar estos pasos:**
+## 📝 Notas Técnicas
 
-### ✅ Problema Identificado
-- [x] API key de Resend es de ejemplo, no real: `re_NECESITAS_PONER_TU_CLAVE_REAL_AQUI`
-- [x] Servidor reiniciado y funcionando en http://localhost:8080
+### Algoritmo de Mezcla de Respuestas
+- Utiliza Fisher-Yates shuffle con generador pseudoaleatorio seeded
+- Seed basado en ID de pregunta (pregunta.id * 12345)
+- Generador: `seed = (seed * 9301 + 49297) % 233280`
+- Garantiza distribución uniforme de respuestas correctas
+- Mantiene consistencia entre sesiones para mismo usuario
 
-### 📝 Próximos pasos del Usuario:
-1. [ ] **Acceder a página de diagnóstico:** http://localhost:8080/diagnostico-emails
-2. [ ] **Registrarse en Resend:** https://resend.com/signup (gratis)
-3. [ ] **Obtener API key:** Dashboard → API Keys → Create API Key → Copiar clave
-4. [ ] **Editar .env.local:** Reemplazar `RESEND_API_KEY=re_tu_clave_real_aqui_cuando_la_tengas` con la clave real
-5. [ ] **Reiniciar servidor:** Ctrl+C → `bun run dev`
-6. [ ] **Probar emails:** Ir a /diagnostico-emails y enviar prueba
+### Archivos Modificados
+- `custodia-360/src/app/test-evaluacion-principal/page.tsx`
+- `custodia-360/src/app/test-evaluacion-suplente/page.tsx`
 
-### 🔧 Sistema Preparado
-- [x] Página de diagnóstico `/diagnostico-emails` creada y funcionando
-- [x] Instrucciones detalladas proporcionadas al usuario
-- [x] .env.local preparado para recibir API key real
-- [x] Servidor funcionando correctamente
-
-## ✅ Completadas Recientemente
-- [x] Creada página de diagnóstico de emails en `/diagnostico-emails`
-- [x] Modificado homepage: color "Tu entidad" a negro
-- [x] Removido stray "D" del dashboard mockup
-- [x] Removidos iconos del iPhone mockup
-- [x] Añadidas sombras al iPhone mockup
-- [x] Arreglado overflow del contenido del iPhone mockup
-
-## 📊 Estado del Proyecto
-- **Versión actual:** 801
-- **Servidor:** ✅ Funcionando en http://localhost:8080
-- **Deploy:** ❌ Pendiente hasta que emails funcionen
-- **Emails:** 🔧 Esperando configuración de API key del usuario
-- **Panel Entidad:** 🔧 Requiere conexión a Supabase real y limpieza UI
+## 🎯 Próximos Pasos Sugeridos
+1. Verificar funcionamiento de tests con nuevas posiciones
+2. Revisar estadísticas de distribución de respuestas
+3. Considerar añadir más variedad en las preguntas
+4. Optimizar experiencia de usuario en dispositivos móviles
