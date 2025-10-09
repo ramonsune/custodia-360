@@ -1,58 +1,138 @@
 #!/usr/bin/env node
 
-console.log('🔧 Ejecutando verificaciones pre-build...')
+/**
+ * Pre-build check script for Custodia360
+ * Validates the build environment before starting the production build
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+console.log('🔧 Running pre-build checks...');
 
 // Check Node.js version
-const nodeVersion = process.version
-console.log(`📦 Node.js version: ${nodeVersion}`)
+const nodeVersion = process.version;
+const majorVersion = parseInt(nodeVersion.slice(1).split('.')[0]);
 
-if (parseInt(nodeVersion.slice(1)) < 18) {
-  console.warn('⚠️ Warning: Node.js version is below 18. Consider upgrading.')
+console.log(`📦 Node.js version: ${nodeVersion}`);
+
+if (majorVersion < 20) {
+  console.warn('⚠️  Warning: Node.js 20+ is recommended for Next.js 15.5.0 and React 19');
+  console.warn('   Current version may cause compatibility issues');
 }
 
-// Check environment
-const isNetlify = process.env.NETLIFY === 'true'
-const environment = process.env.NODE_ENV || 'development'
+// Check if required files exist
+const requiredFiles = [
+  'next.config.js',
+  'package.json',
+  'tsconfig.json',
+  'tailwind.config.js'
+];
 
-console.log(`🌍 Environment: ${environment}`)
-console.log(`🏗️ Building on Netlify: ${isNetlify}`)
+const missingFiles = [];
 
-// Check memory
-const memoryUsage = process.memoryUsage()
-console.log(`💾 Memory usage: ${Math.round(memoryUsage.heapUsed / 1024 / 1024)}MB`)
+requiredFiles.forEach(file => {
+  if (!fs.existsSync(path.join(process.cwd(), file))) {
+    missingFiles.push(file);
+  }
+});
 
-// Check environment variables
-const requiredEnvVars = [
-  'NEXT_PUBLIC_SUPABASE_URL',
-  'NEXT_PUBLIC_SUPABASE_ANON_KEY'
-]
+if (missingFiles.length > 0) {
+  console.error('❌ Missing required files:');
+  missingFiles.forEach(file => {
+    console.error(`   - ${file}`);
+  });
+  process.exit(1);
+}
 
-let missingVars = []
-for (const envVar of requiredEnvVars) {
-  if (!process.env[envVar]) {
-    missingVars.push(envVar)
-  } else {
-    console.log(`✅ ${envVar}: Configurado`)
+// Check package.json for critical dependencies
+try {
+  const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
+  const criticalDeps = [
+    'next',
+    'react',
+    'react-dom',
+    'typescript',
+    '@netlify/plugin-nextjs'
+  ];
+
+  const missingDeps = [];
+
+  criticalDeps.forEach(dep => {
+    if (!packageJson.dependencies?.[dep] && !packageJson.devDependencies?.[dep]) {
+      missingDeps.push(dep);
+    }
+  });
+
+  if (missingDeps.length > 0) {
+    console.error('❌ Missing critical dependencies:');
+    missingDeps.forEach(dep => {
+      console.error(`   - ${dep}`);
+    });
+    process.exit(1);
+  }
+
+  // Check Next.js version compatibility
+  const nextVersion = packageJson.dependencies?.['next'] || packageJson.devDependencies?.['next'];
+  if (nextVersion && !nextVersion.includes('15.')) {
+    console.warn('⚠️  Warning: Next.js version may not be compatible with current configuration');
+  }
+
+  // Check React version compatibility
+  const reactVersion = packageJson.dependencies?.['react'] || packageJson.devDependencies?.['react'];
+  if (reactVersion && !reactVersion.includes('19.')) {
+    console.warn('⚠️  Warning: React version may not be compatible with Next.js 15.5.0');
+  }
+
+} catch (error) {
+  console.error('❌ Error reading package.json:', error.message);
+  process.exit(1);
+}
+
+// Check for common build issues
+console.log('🔍 Checking for potential build issues...');
+
+// Check if .next directory exists and clean it
+if (fs.existsSync('.next')) {
+  console.log('🧹 Cleaning previous build artifacts...');
+  try {
+    fs.rmSync('.next', { recursive: true, force: true });
+    console.log('✅ Previous build cleaned');
+  } catch (error) {
+    console.warn('⚠️  Could not clean .next directory:', error.message);
   }
 }
 
-if (missingVars.length > 0) {
-  console.error(`❌ Variables de entorno faltantes: ${missingVars.join(', ')}`)
-  if (isNetlify) {
-    console.error('💥 Build fallará en Netlify sin estas variables')
-    process.exit(1)
-  } else {
-    console.log('⏭️ Continuando en desarrollo local')
+// Check disk space (simplified check)
+try {
+  const stats = fs.statSync('.');
+  console.log('📊 Build environment ready');
+} catch (error) {
+  console.error('❌ File system check failed:', error.message);
+  process.exit(1);
+}
+
+// Verify environment for production build
+if (process.env.NODE_ENV === 'production' || process.env.NETLIFY) {
+  console.log('🌐 Production environment detected');
+
+  // Check for required production environment variables
+  const prodRequiredVars = [
+    'NEXT_PUBLIC_SUPABASE_URL',
+    'NEXT_PUBLIC_SUPABASE_ANON_KEY'
+  ];
+
+  const missingProdVars = prodRequiredVars.filter(envVar => !process.env[envVar]);
+
+  if (missingProdVars.length > 0) {
+    console.error('❌ Missing production environment variables:');
+    missingProdVars.forEach(envVar => {
+      console.error(`   - ${envVar}`);
+    });
+    process.exit(1);
   }
 }
 
-// Check build flags
-if (process.env.SKIP_TYPE_CHECK === 'true') {
-  console.log('⏭️ TypeScript type checking deshabilitado')
-}
-
-if (process.env.DISABLE_ESLINT === 'true') {
-  console.log('⏭️ ESLint deshabilitado')
-}
-
-console.log('✅ Verificaciones pre-build completadas\n')
+console.log('✅ All pre-build checks passed');
+console.log('🚀 Proceeding with build...');

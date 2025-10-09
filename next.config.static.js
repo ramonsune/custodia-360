@@ -1,35 +1,34 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Essential settings for Netlify deployment
+  // Static export configuration for Netlify
+  output: 'export',
+  trailingSlash: true,
+  skipTrailingSlashRedirect: true,
+
+  // Build settings
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Netlify handles image optimization automatically
+
+  // Image optimization must be disabled for static export
   images: {
     unoptimized: true,
   },
-  // Enable strict mode for better React 19 compatibility
+
+  // Disable server-side features for static export
   reactStrictMode: true,
+
   // Environment variables
   env: {
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
-  // Remove standalone output - Netlify uses its own OpenNext adapter
-  // output: 'standalone', // REMOVED - Not compatible with Netlify
 
-  // Enhanced experimental features for Next.js 15.5.0
-  experimental: {
-    // Ensure compatibility with React 19
-    ppr: 'incremental',
-  },
-
-  // webpack configuration to handle build issues
+  // webpack configuration
   webpack: (config, { isServer }) => {
-    // Handle module resolution issues
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
@@ -38,7 +37,6 @@ const nextConfig = {
       crypto: false,
     };
 
-    // Ignore specific warnings for cleaner builds
     config.ignoreWarnings = [
       { module: /node_modules\/punycode/ },
       { module: /node_modules\/node-fetch/ },
@@ -48,11 +46,14 @@ const nextConfig = {
     return config;
   },
 
-  // Increase timeout for large builds
+  // Increase timeout for static generation
   staticPageGenerationTimeout: 300,
 
   // Ensure proper handling of dynamic imports
   swcMinify: true,
+
+  // Disable experimental features that require server-side rendering
+  experimental: {},
 }
 
 module.exports = nextConfig

@@ -1,38 +1,91 @@
 #!/usr/bin/env node
 
-console.log('🔍 Validando variables de entorno...')
+/**
+ * Environment validation script for Custodia360
+ * Ensures all required environment variables are present for production builds
+ */
 
 const requiredEnvVars = [
   'NEXT_PUBLIC_SUPABASE_URL',
-  'NEXT_PUBLIC_SUPABASE_ANON_KEY'
-]
+  'NEXT_PUBLIC_SUPABASE_ANON_KEY',
+  'SUPABASE_SERVICE_ROLE_KEY',
+  'RESEND_API_KEY',
+  'RESEND_FROM_EMAIL',
+  'NEXT_PUBLIC_APP_URL',
+  'CRON_SECRET_TOKEN',
+  'PDFSHIFT_API_KEY'
+];
 
-let hasErrors = false
+const optionalEnvVars = [
+  'DEMO_MODE',
+  'BOE_MONITOREO_ACTIVO',
+  'BOE_FRECUENCIA_DIAS',
+  'AUDIT_RETENTION_YEARS',
+  'AUDIT_TIMEZONE',
+  'LOPIVI_COMPLIANCE_MODE'
+];
 
-for (const envVar of requiredEnvVars) {
-  const value = process.env[envVar]
-  if (!value) {
-    console.error(`❌ Variable de entorno faltante: ${envVar}`)
-    hasErrors = true
+console.log('🔍 Validating environment variables...');
+
+let hasErrors = false;
+const missing = [];
+const present = [];
+
+// Check required environment variables
+requiredEnvVars.forEach(envVar => {
+  if (!process.env[envVar]) {
+    missing.push(envVar);
+    hasErrors = true;
   } else {
-    console.log(`✅ ${envVar}: ${value.substring(0, 20)}...`)
+    present.push(envVar);
   }
+});
+
+// Report results
+console.log(`✅ Found ${present.length} required environment variables`);
+
+if (missing.length > 0) {
+  console.error('❌ Missing required environment variables:');
+  missing.forEach(envVar => {
+    console.error(`   - ${envVar}`);
+  });
+  console.error('\nPlease ensure all required environment variables are set in your netlify.toml or Netlify dashboard.');
+  process.exit(1);
+}
+
+// Check optional variables (just for information)
+const optionalPresent = optionalEnvVars.filter(envVar => process.env[envVar]);
+const optionalMissing = optionalEnvVars.filter(envVar => !process.env[envVar]);
+
+if (optionalPresent.length > 0) {
+  console.log(`ℹ️  Found ${optionalPresent.length} optional environment variables`);
+}
+
+if (optionalMissing.length > 0) {
+  console.log(`⚠️  Missing ${optionalMissing.length} optional environment variables (using defaults)`);
+}
+
+// Validate URL formats
+if (process.env.NEXT_PUBLIC_SUPABASE_URL && !process.env.NEXT_PUBLIC_SUPABASE_URL.startsWith('https://')) {
+  console.error('❌ NEXT_PUBLIC_SUPABASE_URL must start with https://');
+  hasErrors = true;
+}
+
+if (process.env.NEXT_PUBLIC_APP_URL && !process.env.NEXT_PUBLIC_APP_URL.startsWith('https://')) {
+  console.error('❌ NEXT_PUBLIC_APP_URL must start with https://');
+  hasErrors = true;
+}
+
+// Validate email format
+if (process.env.RESEND_FROM_EMAIL && !process.env.RESEND_FROM_EMAIL.includes('@')) {
+  console.error('❌ RESEND_FROM_EMAIL must be a valid email address');
+  hasErrors = true;
 }
 
 if (hasErrors) {
-  console.error('\n⚠️ Variables de entorno faltantes (puede ser normal en desarrollo local)')
-  console.log('\n📝 Soluciones para producción:')
-  console.log('1. Configurar las variables en el dashboard de Netlify')
-  console.log('2. Verificar el archivo netlify.toml')
-  console.log('3. Verificar el archivo .env.local')
-
-  // Solo fallar en producción (Netlify), no en desarrollo local
-  if (process.env.NETLIFY === 'true') {
-    console.error('\n💥 Build fallido en producción: Variables de entorno requeridas')
-    process.exit(1)
-  } else {
-    console.log('\n⏭️ Continuando build (desarrollo local)')
-  }
-} else {
-  console.log('\n✅ Todas las variables de entorno están configuradas correctamente')
+  console.error('\n❌ Environment validation failed');
+  process.exit(1);
 }
+
+console.log('✅ All environment variables validated successfully');
+console.log('🚀 Ready for production build');
