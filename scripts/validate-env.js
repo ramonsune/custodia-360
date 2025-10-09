@@ -5,6 +5,9 @@
  * Ensures all required environment variables are present for production builds
  */
 
+// Load environment variables from .env.local
+require('dotenv').config({ path: '.env.local' });
+
 const requiredEnvVars = [
   'NEXT_PUBLIC_SUPABASE_URL',
   'NEXT_PUBLIC_SUPABASE_ANON_KEY',
@@ -13,7 +16,8 @@ const requiredEnvVars = [
   'RESEND_FROM_EMAIL',
   'NEXT_PUBLIC_APP_URL',
   'CRON_SECRET_TOKEN',
-  'PDFSHIFT_API_KEY'
+  'PDFSHIFT_API_KEY',
+  'STRIPE_SECRET_KEY'
 ];
 
 const optionalEnvVars = [

@@ -21,12 +21,6 @@ const nextConfig = {
   // Remove standalone output - Netlify uses its own OpenNext adapter
   // output: 'standalone', // REMOVED - Not compatible with Netlify
 
-  // Enhanced experimental features for Next.js 15.5.0
-  experimental: {
-    // Ensure compatibility with React 19
-    ppr: 'incremental',
-  },
-
   // webpack configuration to handle build issues
   webpack: (config, { isServer }) => {
     // Handle module resolution issues
@@ -50,9 +44,6 @@ const nextConfig = {
 
   // Increase timeout for large builds
   staticPageGenerationTimeout: 300,
-
-  // Ensure proper handling of dynamic imports
-  swcMinify: true,
 }
 
 module.exports = nextConfig
