@@ -1,0 +1,14 @@
+# ============================================================
+# REDIRECTS DE DOMINIO - Forzar .com → .es
+# ============================================================
+# Todas las variantes de custodia360.com redirigen a www.custodia360.es
+
+https://custodia360.com/*         https://www.custodia360.es/:splat  301!
+http://custodia360.com/*          https://www.custodia360.es/:splat  301!
+http://www.custodia360.com/*      https://www.custodia360.es/:splat  301!
+https://www.custodia360.com/*     https://www.custodia360.es/:splat  301!
+
+# Asegurar HTTPS en .es
+http://custodia360.es/*           https://www.custodia360.es/:splat  301!
+http://www.custodia360.es/*       https://www.custodia360.es/:splat  301!
+https://custodia360.es/*          https://www.custodia360.es/:splat  301!

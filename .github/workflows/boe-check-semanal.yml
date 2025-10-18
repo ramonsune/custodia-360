@@ -1,0 +1,52 @@
+name: BOE Check Semanal
+
+on:
+  schedule:
+    # Ejecutar cada lunes a las 08:00 UTC (09:00 Madrid)
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+    # Permitir ejecución manual desde GitHub Actions
+
+jobs:
+  check-boe:
+    runs-on: ubuntu-latest
+    name: Verificar cambios BOE LOPIVI
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Ejecutar verificación BOE
+        env:
+          SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          echo "🔍 Iniciando verificación BOE LOPIVI..."
+
+          response=$(curl -X POST \
+            -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"scheduled":true,"source":"github-actions"}' \
+            "$SUPABASE_URL/functions/v1/c360_boe_check")
+
+          echo "✅ Respuesta de la verificación:"
+          echo "$response" | jq .
+
+          # Verificar si fue exitoso
+          success=$(echo "$response" | jq -r '.success')
+          if [ "$success" != "true" ]; then
+            echo "❌ Error en la verificación BOE"
+            exit 1
+          fi
+
+          cambios=$(echo "$response" | jq -r '.cambios_nuevos')
+          echo "📊 Cambios nuevos detectados: $cambios"
+
+      - name: Notificar resultado
+        if: always()
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "✅ Verificación BOE completada exitosamente"
+          else
+            echo "❌ Verificación BOE falló"
+          fi
