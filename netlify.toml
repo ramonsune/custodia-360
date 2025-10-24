@@ -1,0 +1,137 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Essential Next.js plugin for Netlify
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  # Node configuration
+  NODE_VERSION = "20"
+  NEXT_TELEMETRY_DISABLED = "1"
+  NODE_OPTIONS = "--max-old-space-size=8192"
+
+  # C360 Build mode (set to "true" for strict builds)
+  NEXT_BUILD_STRICT = "false"
+
+  # Supabase Configuration
+  NEXT_PUBLIC_SUPABASE_URL = "https://gkoyqfusawhnobvkoijc.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdrb3lxZnVzYXdobm9idmtvaWpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyODMzOTQsImV4cCI6MjA3MTg1OTM5NH0.8PhAfdlfpiLih4_QqrfWRbn-gZ8eeWX7NaTGpO-9hyY"
+  SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdrb3lxZnVzYXdobm9idmtvaWpjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NjI4MzM5NCwiZXhwIjoyMDcxODU5Mzk0fQ.9oKkdWJsUEQaVXhOE4Uf4Nx6a0-8BZ5hNjdl_EyIJQM"
+
+  # Resend Configuration
+  RESEND_API_KEY = "re_JfPp939X_84TnwFXTiDRqMtUfdd2omgRA"
+  RESEND_FROM_EMAIL = "noreply@custodia360.es"
+
+  # Sistema Configuration
+  DEMO_MODE = "false"
+  NEXT_PUBLIC_APP_URL = "https://custodia360.netlify.app"
+  APP_BASE_URL = "https://www.custodia360.es"
+  NEXT_PUBLIC_APP_BASE_URL = "https://www.custodia360.es"
+  APP_TIMEZONE = "Europe/Madrid"
+  NOTIFY_EMAIL_FROM = "no-reply@custodia360.es"
+  CRON_SECRET_TOKEN = "custodia360-cron-secret-2025"
+
+  # PDF Generation
+  PDFSHIFT_API_KEY = "sk_3f24779f1fb6b4fa0a2bf6bfe6d25019fa8a19c6"
+
+  # Stripe Configuration - Configure in Netlify UI
+  # STRIPE_SECRET_KEY = "your_stripe_secret_key"
+  # STRIPE_WEBHOOK_SECRET = "your_stripe_webhook_secret"
+  # NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = "your_stripe_publishable_key"
+
+  # Stripe Price IDs
+  STRIPE_PRICE_PLAN_100 = "price_1SFxNFPtu7JxWqv903F0znAe"
+  STRIPE_PRICE_PLAN_250 = "price_1SFfQmPtu7JxWqv9IgtAnkc2"
+  STRIPE_PRICE_PLAN_500 = "price_1SFydNPtu7JxWqv9mUQ9HMjh"
+  STRIPE_PRICE_PLAN_500_PLUS = "price_1SFyhxPtu7JxWqv9GG2GD6nS"
+  STRIPE_PRICE_KIT_COMUNICACION = "price_1SFtBIPtu7JxWqv9sw7DH5ML"
+  STRIPE_PRICE_DELEGADO_SUPLENTE = "price_1SFzPXPtu7JxWqv9HnltemCh"
+
+  # Holded API Configuration
+  HOLDED_API_KEY = "e9d72a6218d5920fdf1d70196c7e5b01"
+  HOLDED_API_URL = "https://api.holded.com/api"
+
+  # Holded Product IDs
+  HOLDED_PRODUCT_PLAN_100 = "68f9164ccdde27b3e5014c72"
+  HOLDED_PRODUCT_PLAN_250 = "68f916d4ebdb43e4cc0b747a"
+  HOLDED_PRODUCT_PLAN_500 = "68f91716736b41626c08ee2b"
+  HOLDED_PRODUCT_PLAN_500_PLUS = "68f9175775da4dcc780c6117"
+  HOLDED_PRODUCT_KIT = "68f91782196598d24f0a6ec6"
+  HOLDED_PRODUCT_SUPLENTE = "68f917abd2ec4e80a2085c10"
+
+  # BOE Monitoring
+  BOE_MONITOREO_ACTIVO = "true"
+  BOE_FRECUENCIA_DIAS = "15"
+
+  # Audit System
+  AUDIT_RETENTION_YEARS = "5"
+  AUDIT_TIMEZONE = "Europe/Madrid"
+  LOPIVI_COMPLIANCE_MODE = "true"
+
+# Enhanced headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Redirects - Not needed with @netlify/plugin-nextjs
+# The plugin handles all Next.js routing (pages and API routes) automatically
+
+# Function configuration for better performance
+[functions]
+  node_bundler = "esbuild"
+
+# ============================================================
+# SCHEDULED FUNCTIONS (Cron Jobs)
+# ============================================================
+# Horarios en UTC: 07:00-08:00 UTC ≈ 09:00-10:00 Europe/Madrid
+
+[[scheduled.functions]]
+cron = "*/10 * * * *"
+path = "/.netlify/functions/c360_mailer_dispatch"
+
+[[scheduled.functions]]
+cron = "0 8 * * *"
+path = "/.netlify/functions/c360_billing_reminders"
+
+[[scheduled.functions]]
+cron = "0 8 * * *"
+path = "/.netlify/functions/c360_onboarding_guard"
+
+[[scheduled.functions]]
+cron = "0 7 * * *"
+path = "/.netlify/functions/c360_compliance_guard"
+
+[[scheduled.functions]]
+cron = "0 7 * * *"
+path = "/.netlify/functions/c360_healthcheck"
+
+# Daily audit - ejecuta cada hora, filtra 09:00 Europe/Madrid en el handler
+[[scheduled.functions]]
+cron = "0 * * * *"
+path = "/.netlify/functions/c360_daily_audit"
+
+# ============================================================
+# PAYMENT SYSTEM - Scheduled Functions
+# ============================================================
+
+# Recordatorios de segundo pago (30 días antes)
+[[scheduled.functions]]
+cron = "0 9 * * *"
+path = "/.netlify/functions/c360_payment_reminders"
+
+# Reintentos automáticos de pago fallido
+[[scheduled.functions]]
+cron = "0 10 * * *"
+path = "/.netlify/functions/c360_payment_retry"
+
+# Control de período de gracia y bloqueo de cuentas
+[[scheduled.functions]]
+cron = "0 11 * * *"
+path = "/.netlify/functions/c360_payment_grace_enforcement"

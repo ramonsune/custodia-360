@@ -1,0 +1,211 @@
+============================================================
+RESUMEN EJECUTIVO DE IMPLEMENTACIÓN
+============================================================
+
+ MODO CONSOLIDACIÓN: ACTIVO
+- Todo el código base está PROTEGIDO
+- Solo se han AÑADIDO nuevas funcionalidades
+- No se ha modificado ningún código existente
+
+============================================================
+============================================================
+
+1. contact-auto-reply         ✅ Autorespuesta contacto web
+2. contractor-confirm          ✅ Confirmación al contratante
+3. admin-invoice              ✅ Factura a administración
+4. delegate-welcome           ✅ Bienvenida delegado principal
+5. delegate-supl-welcome      ✅ Bienvenida delegado suplente
+6. billing-5m-reminder        ✅ Recordatorio 5 meses (2º tramo)
+7. billing-11m-reminder       ✅ Recordatorio 11 meses (pago anual)
+
+Archivo SQL: supabase/migrations/20250116_email_templates_expansion.sql
+
+============================================================
+============================================================
+
+ /api/webhooks/stripe/route.ts
+   - AÑADIDO: Envío de 4 emails tras contratación exitosa
+   - Mantiene funcionalidad existente del Kit de Comunicación
+
+ /api/public/contact/route.ts  
+   - Ya existente (sin cambios)
+   - Funciona con slug "contacto-auto-reply"
+
+ supabase/functions/c360_billing_reminders/index.ts (NUEVO)
+   - Envía recordatorios a 5 y 11 meses
+   - Se ejecuta diariamente vía cron
+
+============================================================
+============================================================
+
+1. supabase/migrations/20250116_email_templates_expansion.sql
+   → Plantillas de email
+
+2. supabase/migrations/20250116_email_cron_schedules.sql
+   → Configuración de cron jobs + campos en entidades
+
+3. supabase/functions/c360_billing_reminders/index.ts
+   → Edge Function para recordatorios
+
+4. src/app/api/test-email-system/route.ts
+   → Endpoint de pruebas del sistema
+
+5. .same/email-system-setup.md
+   → Documentación completa (setup, pruebas, troubleshooting)
+
+6. .same/RESUMEN_EMAIL_SYSTEM.txt
+   → Este archivo
+
+============================================================
+============================================================
+
+ APP_BASE_URL=https://www.custodia360.es
+ NEXT_PUBLIC_APP_BASE_URL=https://www.custodia360.es
+ NOTIFY_EMAIL_FROM=no-reply@custodia360.es
+ APP_TIMEZONE=Europe/Madrid
+
+ PENDIENTE EN PRODUCCIÓN:
+   - SUPABASE_SERVICE_ROLE_KEY (añadir manualmente)
+   - RESEND_API_KEY (configurar en Resend Dashboard)
+
+============================================================
+CRON JOBS A CONFIGURAR EN SUPABASE
+============================================================
+
+1. c360_mailer_dispatch_cron
+   Frecuencia: Cada 10 minutos (*/10 * * * *)
+   Función: c360_mailer_dispatch
+   Descripción: Procesa cola de emails pendientes
+
+2. c360_billing_reminders_cron
+   Frecuencia: Diario 08:00 UTC = 09:00 Madrid (0 8 * * *)
+   Función: c360_billing_reminders
+   Descripción: Envía recordatorios de facturación
+
+Instrucciones SQL en: 
+supabase/migrations/20250116_email_cron_schedules.sql
+
+============================================================
+============================================================
+
+A) FORMULARIO DE CONTACTO (Ya existía)
+   ----------------------------------------
+   1. Usuario envía formulario contacto web
+   2. Backend guarda en contact_messages
+   3. Encola email interno a nandolmo@teamsml.com
+   4. Encola autorespuesta al usuario (slug: contacto-auto-reply)
+   5. Dispatcher envía ambos emails
+
+B) TRAS CONTRATAR Y PAGAR (NUEVO ✅)
+   ----------------------------------------
+   Trigger: checkout.session.completed (Stripe webhook)
+   
+   Emails encolados simultáneamente:
+   1. → Contratante: contractor-confirm
+   2. → Administración: admin-invoice (con invoice_url)
+   3. → Delegado Principal: delegate-welcome
+   4. → Delegado Suplente: delegate-supl-welcome (si existe)
+
+C) RECORDATORIOS AUTOMÁTICOS (NUEVO ✅)
+   ----------------------------------------
+   Cron diario verifica entidades y envía:
+   
+   - A 5 meses (150 días desde contratación):
+     → billing-5m-reminder a admin_email
+     
+   - A 11 meses (330 días desde contratación):
+     → billing-11m-reminder a admin_email
+
+============================================================
+============================================================
+
+1. ENDPOINT DE PRUEBA
+   GET  /api/test-email-system
+   → Ver todas las plantillas disponibles
+   
+   POST /api/test-email-system
+   Body: {
+     "template": "delegate-welcome",
+     "toEmail": "prueba@example.com",
+     "context": { ... }
+   }
+   → Encola email de prueba
+
+2. QUERIES SQL DE MONITOREO
+   Ver en: .same/email-system-setup.md
+   - Jobs pendientes
+   - Emails enviados
+   - Errores
+
+3. PRUEBAS DE RECORDATORIOS
+   Ajustar contract_start_at en entidades de prueba
+   Ver en: .same/email-system-setup.md
+
+============================================================
+============================================================
+
+1. [ ] Aplicar migraciones en Supabase
+   cd custodia-360
+   supabase db push
+   
+   O ejecutar manualmente en SQL Editor:
+   - 20250116_email_templates_expansion.sql
+   - 20250116_email_cron_schedules.sql
+
+2. [ ] Configurar variables de entorno en Netlify
+   Site Settings → Environment Variables
+   - SUPABASE_SERVICE_ROLE_KEY (desde Supabase Dashboard)
+   - RESEND_API_KEY (desde Resend Dashboard)
+
+3. [ ] Verificar dominio custodia360.es en Resend
+   https://resend.com/domains
+   - Añadir dominio
+   - Configurar DNS (SPF, DKIM, DMARC)
+   - Verificar
+
+4. [ ] Desplegar Edge Function c360_billing_reminders
+   cd custodia-360/supabase/functions
+   supabase functions deploy c360_billing_reminders
+
+5. [ ] Programar cron jobs en Supabase
+   Dashboard → SQL Editor
+   Ejecutar queries del archivo:
+   supabase/migrations/20250116_email_cron_schedules.sql
+
+6. [ ] Ejecutar pruebas
+   A) Formulario contacto → verificar autorespuesta
+   B) Simular pago Stripe → verificar 4 emails
+   C) Ajustar fechas → verificar recordatorios
+
+7. [ ] Monitorear logs primeras 24h
+   Supabase Dashboard → Edge Functions → Logs
+
+============================================================
+============================================================
+
+Ver guía completa en: .same/email-system-setup.md
+
+Problemas comunes:
+- Emails no se envían → Verificar RESEND_API_KEY
+- Cron no ejecuta → Verificar programación en Supabase
+- Dominio no verificado → Revisar DNS, esperar propagación
+- Recordatorios no envían → Verificar contract_start_at
+
+============================================================
+============================================================
+
+Documentación técnica completa:
+.same/email-system-setup.md
+
+Archivos de configuración:
+- Plantillas: supabase/migrations/20250116_email_templates_expansion.sql
+- Cron Jobs: supabase/migrations/20250116_email_cron_schedules.sql
+- Edge Function: supabase/functions/c360_billing_reminders/index.ts
+
+Endpoint de prueba:
+/api/test-email-system
+
+============================================================
+ ESTADO: IMPLEMENTACIÓN COMPLETA
+   PENDIENTE: CONFIGURACIÓN EN PRODUCCIÓN
+============================================================

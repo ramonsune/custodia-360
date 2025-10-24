@@ -1,0 +1,100 @@
+import { NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+import { generateQuiz } from '@/lib/quiz/questions'
+
+export async function POST(req: Request) {
+  try {
+    const { token, role } = await req.json()
+
+    if (!token) {
+      return NextResponse.json({
+        ok: false,
+        error: 'Token requerido'
+      }, { status: 400 })
+    }
+
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      { auth: { persistSession: false } }
+    )
+
+    // Verificar token y obtener entity_id
+    const { data: tokenData, error: tokenError } = await supabase
+      .from('entity_invite_tokens')
+      .select('entity_id')
+      .eq('token', token)
+      .single()
+
+    if (tokenError || !tokenData) {
+      return NextResponse.json({
+        ok: false,
+        error: 'Token no válido'
+      }, { status: 404 })
+    }
+
+    // Obtener sector de la entidad
+    const { data: entity, error: entityError } = await supabase
+      .from('entities')
+      .select('sector_code')
+      .eq('id', tokenData.entity_id)
+      .single()
+
+    if (entityError || !entity) {
+      return NextResponse.json({
+        ok: false,
+        error: 'Entidad no encontrada'
+      }, { status: 404 })
+    }
+
+    // Generar semilla única para este intento
+    const seed = Date.now()
+
+    // Generar quiz con preguntas aleatorias
+    const quizQuestions = generateQuiz(entity.sector_code, seed)
+
+    // Crear intento en BD (sin person_id aún, se añadirá al submit)
+    const { data: attempt, error: attemptError } = await supabase
+      .from('miniquiz_attempts')
+      .insert({
+        entity_id: tokenData.entity_id,
+        sector_code: entity.sector_code,
+        seed,
+        total: 10,
+        started_at: new Date().toISOString(),
+        status: 'in_progress'
+      })
+      .select()
+      .single()
+
+    if (attemptError) {
+      console.error('Error creando intento:', attemptError)
+      return NextResponse.json({
+        ok: false,
+        error: 'Error al crear intento'
+      }, { status: 500 })
+    }
+
+    // Preparar items para el cliente (sin correctIndex)
+    const items = quizQuestions.map(q => ({
+      id: q.id,
+      text: q.text,
+      options: q.options
+    }))
+
+    return NextResponse.json({
+      ok: true,
+      attempt_id: attempt.id,
+      items,
+      total: 10,
+      passing_score: 0.75
+    })
+
+  } catch (error: any) {
+    console.error('Error iniciando quiz:', error)
+    return NextResponse.json({
+      ok: false,
+      error: 'Error del servidor'
+    }, { status: 500 })
+  }
+}
