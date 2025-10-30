@@ -1,0 +1,114 @@
+
+  📧 CHECKLIST DE CONFIGURACIÓN - Sistema de Emails          ║
+  Tiempo total estimado: 15-20 minutos                        ║
+
+
+ PASO 1: Supabase Service Key (2 min) ⭐ CRÍTICO             │
+
+[ ] 1. Ir a: https://supabase.com/dashboard/project/gkoyqfusawhnobvkoijc/settings/api
+[ ] 2. Copiar "service_role" (secret key)
+[ ] 3. Pegar en .env.local → SUPABASE_SERVICE_ROLE_KEY=...
+
+
+ PASO 2: Resend API Key (2 min) ⭐ CRÍTICO                    │
+
+[ ] 1. Ir a: https://resend.com/api-keys
+[ ] 2. Crear/copiar API key
+[ ] 3. Pegar en .env.local → RESEND_API_KEY=...
+
+
+ PASO 3: Verificar Dominio en Resend (5 min) ⭐ CRÍTICO      │
+
+[ ] 1. Ir a: https://resend.com/domains
+[ ] 2. Add Domain → custodia360.es
+[ ] 3. Copiar 3 registros DNS (SPF, DKIM, DMARC)
+[ ] 4. Añadir registros en tu proveedor DNS
+[ ] 5. Esperar 5-15 min
+[ ] 6. Clic en "Verify" en Resend
+[ ] 7. Ver ✅ "Verified"
+
+
+ PASO 4: Migración SQL #1 - Plantillas (2 min) ⭐ CRÍTICO    │
+
+[ ] 1. Ir a: https://supabase.com/dashboard/project/gkoyqfusawhnobvkoijc/editor
+[ ] 2. SQL Editor → + New Query
+[ ] 3. Abrir: supabase/migrations/20250116_email_templates_expansion.sql
+[ ] 4. Copiar TODO el contenido
+[ ] 5. Pegar en SQL Editor
+[ ] 6. Clic "Run" → Ver "Success"
+
+
+ PASO 5: Migración SQL #2 - Cron Config (2 min) ⭐ CRÍTICO   │
+
+[ ] 1. SQL Editor → + New Query
+[ ] 2. Abrir: supabase/migrations/20250116_email_cron_schedules.sql
+[ ] 3. Copiar TODO el contenido
+[ ] 4. Pegar en SQL Editor
+[ ] 5. Clic "Run" → Ver "Success"
+
+
+ PASO 6: Verificar Plantillas Creadas (1 min)                │
+
+[ ] 1. SQL Editor → Nueva Query
+[ ] 2. Ejecutar: SELECT slug FROM message_templates ORDER BY slug;
+[ ] 3. Verificar que aparecen:
+    [ ] admin-invoice
+    [ ] billing-11m-reminder
+    [ ] billing-5m-reminder
+    [ ] contact-auto-reply
+    [ ] contractor-confirm
+    [ ] delegate-supl-welcome
+    [ ] delegate-welcome
+
+
+ PASO 7: Configurar Cron Jobs (3 min) ⭐ CRÍTICO             │
+
+[ ] 1. SQL Editor → + New Query
+[ ] 2. Ver archivo: .same/SETUP_MANUAL.md (PASO 5)
+[ ] 3. Copiar las 2 queries de cron.schedule
+[ ] 4. Pegar en SQL Editor
+[ ] 5. Clic "Run"
+[ ] 6. Verificar: SELECT * FROM cron.job;
+[ ] 7. Ver 2 jobs: c360_mailer_dispatch_cron y c360_billing_reminders_cron
+
+
+ PASO 8 (OPCIONAL): Variables Netlify - Solo para producción │
+
+[ ] 1. Netlify → Site settings → Environment variables
+[ ] 2. Añadir SUPABASE_SERVICE_ROLE_KEY
+[ ] 3. Añadir RESEND_API_KEY
+[ ] 4. Añadir APP_BASE_URL
+[ ] 5. Añadir NOTIFY_EMAIL_FROM
+[ ] 6. Save
+
+
+ ✅ PRUEBA FINAL: Verificar que funciona                     │
+
+[ ] 1. Abrir terminal en custodia-360
+[ ] 2. Ejecutar:
+    curl -X POST http://localhost:3000/api/test-email-system \
+      -H "Content-Type: application/json" \
+      -d '{"template":"contact-auto-reply","toEmail":"TU_EMAIL@example.com","context":{"nombre":"Prueba"}}'
+[ ] 3. Ver respuesta: {"success": true, ...}
+[ ] 4. Esperar 10 minutos
+[ ] 5. Revisar tu email → Deberías recibir el email de prueba
+
+
+ 📊 ESTADO FINAL                                              │
+
+[ ] Sistema de emails 100% configurado y operativo
+[ ] Pueden enviarse emails desde la aplicación
+[ ] Cron jobs ejecutándose automáticamente
+[ ] Dominio verificado en Resend
+
+
+
+- Guarda las claves API en un gestor de contraseñas
+- Los cron ejecutan en UTC (08:00 UTC = 09:00 Madrid)
+- El dispatcher ejecuta cada 10 minutos automáticamente
+- Revisa logs en Supabase Dashboard → Functions si hay problemas
+
+- Guía detallada: .same/SETUP_MANUAL.md
+- Resumen ejecutivo: .same/RESUMEN_EMAIL_SYSTEM.txt
+- Documentación técnica: .same/email-system-setup.md
+

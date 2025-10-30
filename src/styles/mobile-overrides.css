@@ -1,0 +1,355 @@
+/**
+ * MOBILE OVERRIDES - Custodia360
+ * Optimizaciones solo para móvil/tablet (≤768px)
+ * NO afecta a desktop (≥1024px)
+ */
+
+:root {
+  --c360-space: 16px;
+  --c360-space-sm: 12px;
+  --c360-touch-target: 44px;
+}
+
+/* ============================================================
+   TIPOGRAFÍA FLUIDA (solo móvil)
+   ============================================================ */
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(24px, 5.5vw, 32px) !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    font-size: clamp(20px, 4.5vw, 26px) !important;
+    line-height: 1.3 !important;
+  }
+
+  h3 {
+    font-size: clamp(18px, 4vw, 22px) !important;
+    line-height: 1.3 !important;
+  }
+
+  p, li, span, div {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Inputs con mínimo 16px para evitar zoom iOS */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  small, .text-xs {
+    font-size: 14px !important;
+  }
+}
+
+/* ============================================================
+   CONTENEDORES Y ESPACIADO
+   ============================================================ */
+@media (max-width: 768px) {
+  .c360-container,
+  .max-w-6xl,
+  .max-w-7xl,
+  .max-w-4xl {
+    padding-left: var(--c360-space) !important;
+    padding-right: var(--c360-space) !important;
+  }
+
+  /* Secciones con padding vertical reducido */
+  section, .py-12, .py-16, .py-20 {
+    padding-top: calc(var(--c360-space) * 2) !important;
+    padding-bottom: calc(var(--c360-space) * 2) !important;
+  }
+}
+
+/* ============================================================
+   GRIDS → STACK VERTICAL
+   ============================================================ */
+@media (max-width: 768px) {
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4,
+  .md\:grid-cols-2,
+  .md\:grid-cols-3,
+  .md\:grid-cols-4 {
+    grid-template-columns: 1fr !important;
+    gap: var(--c360-space-sm) !important;
+  }
+
+  /* Flex rows → column */
+  .flex-row {
+    flex-direction: column !important;
+  }
+
+  .space-x-4 > *,
+  .space-x-6 > *,
+  .space-x-8 > * {
+    margin-left: 0 !important;
+    margin-top: var(--c360-space-sm) !important;
+  }
+}
+
+/* ============================================================
+   TABLAS CON SCROLL HORIZONTAL
+   ============================================================ */
+@media (max-width: 768px) {
+  .c360-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-left: calc(var(--c360-space) * -1);
+    margin-right: calc(var(--c360-space) * -1);
+    padding-left: var(--c360-space);
+    padding-right: var(--c360-space);
+  }
+
+  table {
+    min-width: 640px;
+    font-size: 14px !important;
+  }
+
+  th, td {
+    padding: 8px 12px !important;
+    white-space: nowrap;
+  }
+}
+
+/* ============================================================
+   BOTONES Y TARGETS TÁCTILES (mín. 44px)
+   ============================================================ */
+@media (max-width: 768px) {
+  button,
+  .btn,
+  a[class*="bg-"],
+  [role="button"] {
+    min-height: var(--c360-touch-target) !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+  }
+
+  /* Botones pequeños también táctiles */
+  .text-sm button,
+  button.text-sm {
+    min-height: 40px !important;
+    padding: 10px 14px !important;
+  }
+
+  /* Iconos clickeables */
+  svg[class*="cursor-pointer"],
+  button svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* ============================================================
+   NAVEGACIÓN MÓVIL
+   ============================================================ */
+@media (max-width: 768px) {
+  .c360-nav {
+    gap: 8px !important;
+  }
+
+  /* Ocultar elementos desktop-only */
+  .c360-hide-mobile,
+  .hidden\:md {
+    display: none !important;
+  }
+
+  /* Nav sticky con safe area */
+  nav[class*="sticky"],
+  nav[class*="fixed"] {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* ============================================================
+   CARDS Y COMPONENTES
+   ============================================================ */
+@media (max-width: 768px) {
+  .card,
+  [class*="rounded-lg"],
+  [class*="rounded-xl"] {
+    border-radius: 12px !important;
+  }
+
+  /* Ampliar área táctil de cards clickeables */
+  .cursor-pointer,
+  a > div {
+    min-height: 60px;
+  }
+
+  /* Sombras más suaves en móvil */
+  .shadow-lg {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* ============================================================
+   FORMULARIOS
+   ============================================================ */
+@media (max-width: 768px) {
+  input,
+  textarea,
+  select {
+    width: 100% !important;
+    min-height: var(--c360-touch-target) !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+  }
+
+  label {
+    display: block !important;
+    margin-bottom: 6px !important;
+    font-weight: 500 !important;
+  }
+
+  /* Spacing entre campos */
+  .space-y-4 > * {
+    margin-top: 16px !important;
+  }
+
+  .space-y-6 > * {
+    margin-top: 20px !important;
+  }
+}
+
+/* ============================================================
+   MODALES Y OVERLAYS
+   ============================================================ */
+@media (max-width: 768px) {
+  [class*="fixed inset-0"] {
+    padding: var(--c360-space) !important;
+  }
+
+  /* Modal content con max-height y scroll */
+  .max-h-\[90vh\],
+  [class*="max-h-"] {
+    max-height: calc(100vh - 32px) !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* ============================================================
+   IMÁGENES RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  img,
+  picture,
+  video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Logos más pequeños */
+  .w-10,
+  .h-10 {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .w-16,
+  .h-16 {
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
+/* ============================================================
+   SAFE AREA (iOS NOTCH)
+   ============================================================ */
+@media (max-width: 768px) {
+  .c360-sticky-cta,
+  footer[class*="sticky"],
+  footer[class*="fixed"] {
+    padding-bottom: calc(var(--c360-space) + env(safe-area-inset-bottom)) !important;
+  }
+
+  /* Header con safe area top */
+  header[class*="sticky"],
+  header[class*="fixed"] {
+    padding-top: calc(var(--c360-space) + env(safe-area-inset-top)) !important;
+  }
+}
+
+/* ============================================================
+   ACCESIBILIDAD TÁCTIL
+   ============================================================ */
+@media (pointer: coarse) {
+  /* Tap highlight suave */
+  a, button, [role="button"], [class*="cursor-pointer"] {
+    -webkit-tap-highlight-color: rgba(37, 99, 235, 0.1);
+  }
+
+  /* Focus visible en táctil */
+  *:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+
+  /* Desactivar hover-only en móvil */
+  .hover\:bg-,
+  .hover\:text-,
+  .hover\:border- {
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   TIPOGRAFÍA DE MENSAJES Y ALERTAS
+   ============================================================ */
+@media (max-width: 768px) {
+  .bg-blue-50,
+  .bg-green-50,
+  .bg-yellow-50,
+  .bg-red-50 {
+    padding: 12px !important;
+    border-radius: 8px !important;
+  }
+
+  .bg-blue-50 p,
+  .bg-green-50 p,
+  .bg-yellow-50 p,
+  .bg-red-50 p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* ============================================================
+   PROGRESS BARS Y STEPS
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Progress indicators más compactos */
+  .flex.items-center.justify-between {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  /* Steps verticales en móvil */
+  .flex.items-center > div {
+    width: 100% !important;
+  }
+}
+
+/* ============================================================
+   LISTAS Y CONTENIDO
+   ============================================================ */
+@media (max-width: 768px) {
+  ul, ol {
+    padding-left: 20px !important;
+  }
+
+  li {
+    margin-bottom: 8px !important;
+  }
+
+  /* Prose content más legible */
+  .prose {
+    max-width: 100% !important;
+  }
+
+  .prose p {
+    margin-bottom: 12px !important;
+  }
+}

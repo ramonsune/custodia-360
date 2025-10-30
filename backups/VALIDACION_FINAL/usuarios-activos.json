@@ -1,0 +1,10 @@
+{
+  "fecha": "2025-10-26T17:54:26.127Z",
+  "usuarios_esperados": [
+    "entidad@custodia.com",
+    "delegado@custodia.com",
+    "delegados@custodia.com",
+    "ramon@custodia.com"
+  ],
+  "nota": "Backup de usuarios activos para validación final"
+}

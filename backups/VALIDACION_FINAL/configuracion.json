@@ -1,0 +1,13 @@
+{
+  "fecha": "2025-10-26T17:54:27.488Z",
+  "variables_configuradas": [
+    "NEXT_PUBLIC_SUPABASE_URL",
+    "SUPABASE_SERVICE_ROLE_KEY",
+    "RESEND_API_KEY",
+    "STRIPE_SECRET_KEY",
+    "NEXT_PUBLIC_DEMO_ENABLED",
+    "NEXT_PUBLIC_SIMULAR_AUTH"
+  ],
+  "stripe_mode": "TEST",
+  "demo_enabled": true
+}

@@ -1,0 +1,152 @@
+{
+  "renovación_plan_250": {
+    "producto_id": "prod_THwfRVcvocUzb8",
+    "producto_nombre": "Renovación Plan 250",
+    "precios": [
+      {
+        "id": "price_1SLMmVLJQ7Uat0e7RBYR1kGe",
+        "importe": 78,
+        "moneda": "eur",
+        "tipo": "único"
+      }
+    ]
+  },
+  "prueba_pasarela_de_pago_1€": {
+    "producto_id": "prod_THwfuRusbpUXey",
+    "producto_nombre": "Prueba pasarela de pago 1€",
+    "precios": [
+      {
+        "id": "price_1SLMm6LJQ7Uat0e7GoOxrgbl",
+        "importe": 1,
+        "moneda": "eur",
+        "tipo": "único"
+      }
+    ]
+  },
+  "custodia_temporal": {
+    "producto_id": "prod_THwdD4j3RxLYz3",
+    "producto_nombre": "Custodia Temporal",
+    "precios": [
+      {
+        "id": "price_1SLMkJLJQ7Uat0e7HzGmNM2H",
+        "importe": 100,
+        "moneda": "eur",
+        "tipo": "único"
+      }
+    ]
+  },
+  "renovación_plan_100": {
+    "producto_id": "prod_THwdsv0oBdYXrb",
+    "producto_nombre": "Renovación Plan 100",
+    "precios": [
+      {
+        "id": "price_1SLMkGLJQ7Uat0e7nmpV6783",
+        "importe": 38,
+        "moneda": "eur",
+        "tipo": "único"
+      }
+    ]
+  },
+  "plan_250": {
+    "producto_id": "prod_THwdyTQXlJMHGi",
+    "producto_nombre": "Plan 250",
+    "precios": [
+      {
+        "id": "price_1SLMkCLJQ7Uat0e7ttdnzI8J",
+        "importe": 39,
+        "moneda": "eur",
+        "tipo": "month"
+      }
+    ]
+  },
+  "plan_100": {
+    "producto_id": "prod_THwd0Cym5XvSmL",
+    "producto_nombre": "Plan 100",
+    "precios": [
+      {
+        "id": "price_1SLMk1LJQ7Uat0e7K5L0Veva",
+        "importe": 19,
+        "moneda": "eur",
+        "tipo": "month"
+      },
+      {
+        "id": "price_1SLMjoLJQ7Uat0e7bOyK9b7i",
+        "importe": 19,
+        "moneda": "eur",
+        "tipo": "month"
+      }
+    ]
+  },
+  "plan_500": {
+    "producto_id": "prod_THwdQ8PTBfLzIb",
+    "producto_nombre": "Plan 500",
+    "precios": [
+      {
+        "id": "price_1SLMjmLJQ7Uat0e70Hy7auuG",
+        "importe": 105,
+        "moneda": "eur",
+        "tipo": "month"
+      }
+    ]
+  },
+  "kit_comunicación_lopivi": {
+    "producto_id": "prod_THwcDwmI2c1Bli",
+    "producto_nombre": "Kit Comunicación Lopivi",
+    "precios": [
+      {
+        "id": "price_1SLMjeLJQ7Uat0e7Sdmajn4P",
+        "importe": 40,
+        "moneda": "eur",
+        "tipo": "único"
+      }
+    ]
+  },
+  "plan_500+": {
+    "producto_id": "prod_THwcReGuJ33iZQ",
+    "producto_nombre": "Plan 500+",
+    "precios": [
+      {
+        "id": "price_1SLMjeLJQ7Uat0e7dp38xOi4",
+        "importe": 250,
+        "moneda": "eur",
+        "tipo": "month"
+      }
+    ]
+  },
+  "renovación_plan_500": {
+    "producto_id": "prod_THwcOElVDffuEY",
+    "producto_nombre": "Renovación Plan 500",
+    "precios": [
+      {
+        "id": "price_1SLMjZLJQ7Uat0e7IjUWJcg7",
+        "importe": 210,
+        "moneda": "eur",
+        "tipo": "único"
+      }
+    ]
+  },
+  "renovación_plan_500+": {
+    "producto_id": "prod_THwcAWBny8Fm0f",
+    "producto_nombre": "Renovación Plan 500+",
+    "precios": [
+      {
+        "id": "price_1SLMjWLJQ7Uat0e7o26FKsFJ",
+        "importe": 500,
+        "moneda": "eur",
+        "tipo": "único"
+      }
+    ]
+  },
+  "delegado_suplente": {
+    "producto_id": "prod_THwc76UP6R18v5",
+    "producto_nombre": "Delegado Suplente",
+    "precios": [
+      {
+        "id": "price_1SLMjQLJQ7Uat0e7H2ATOk6Y",
+        "importe": 10,
+        "moneda": "eur",
+        "tipo": "único"
+      }
+    ]
+  }
+}

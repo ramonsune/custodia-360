@@ -1,0 +1,347 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useSupabase } from '@/hooks/useSupabase'
+import Link from 'next/link'
+import SystemStatusWidget from '@/components/admin/SystemStatusWidget'
+import { DemoBadge } from '@/components/demo/DemoBadge'
+import EmailDeliverabilitySection from '@/components/admin/EmailDeliverabilitySection'
+
+interface EntidadConDatos {
+  id: string
+  nombre: string
+  cif: string
+  plan: string
+  precio_mensual: number
+  estado: string
+  numero_menores: string
+  telefono: string
+  email: string
+  created_at: string
+  cumplimiento?: Array<{
+    porcentaje_cumplimiento: number
+    alertas_pendientes: unknown[]
+    casos_activos: number
+  }>
+  delegados?: Array<{
+    nombre: string
+    apellidos: string
+    tipo: string
+    estado: string
+  }>
+}
+
+export default function AdminDashboard() {
+  const { getEntidades, loading, error } = useSupabase()
+  const [entidades, setEntidades] = useState<EntidadConDatos[]>([])
+  const [stats, setStats] = useState({
+    totalEntidades: 0,
+    entidadesActivas: 0,
+    delegadosActivos: 0,
+    ingresosMensuales: 0,
+    cumplimientoPromedio: 0,
+    alertasTotales: 0
+  })
+
+  useEffect(() => {
+    cargarDatos()
+  }, [])
+
+  const cargarDatos = async () => {
+    const resultado = await getEntidades()
+    if (resultado.success && resultado.data) {
+      setEntidades(resultado.data)
+      calcularEstadisticas(resultado.data)
+    }
+  }
+
+  const calcularEstadisticas = (data: EntidadConDatos[]) => {
+    const totalEntidades = data.length
+    const entidadesActivas = data.filter(e => e.estado === 'activa').length
+    const ingresosMensuales = data
+      .filter(e => e.estado === 'activa')
+      .reduce((sum, e) => sum + e.precio_mensual, 0)
+
+    let totalDelegados = 0
+    let totalCumplimiento = 0
+    let totalAlertas = 0
+    let entidadesConCumplimiento = 0
+
+    data.forEach(entidad => {
+      // Contar delegados
+      if (entidad.delegados) {
+        totalDelegados += entidad.delegados.filter(d => d.estado === 'activo').length
+      }
+
+      // Calcular cumplimiento y alertas
+      if (entidad.cumplimiento && entidad.cumplimiento.length > 0) {
+        const cumplimiento = entidad.cumplimiento[0]
+        totalCumplimiento += cumplimiento.porcentaje_cumplimiento
+        totalAlertas += cumplimiento.alertas_pendientes.length
+        entidadesConCumplimiento++
+      }
+    })
+
+    setStats({
+      totalEntidades,
+      entidadesActivas,
+      delegadosActivos: totalDelegados,
+      ingresosMensuales,
+      cumplimientoPromedio: entidadesConCumplimiento > 0 ? totalCumplimiento / entidadesConCumplimiento : 0,
+      alertasTotales: totalAlertas
+    })
+  }
+
+  const formatearFecha = (fecha: string) => {
+    return new Date(fecha).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+  }
+
+  const getEstadoColor = (estado: string) => {
+    switch (estado) {
+      case 'activa': return 'bg-green-100 text-green-800'
+      case 'suspendida': return 'bg-yellow-100 text-yellow-800'
+      case 'cancelada': return 'bg-red-100 text-red-800'
+      default: return 'bg-gray-100 text-gray-800'
+    }
+  }
+
+  const getCumplimientoColor = (porcentaje: number) => {
+    if (porcentaje >= 95) return 'text-green-600'
+    if (porcentaje >= 70) return 'text-yellow-600'
+    return 'text-red-600'
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-orange-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Cargando dashboard...</p>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <div className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Dashboard Administrativo</h1>
+              <p className="text-gray-600">Panel de control Custodia360</p>
+            </div>
+            <div className="flex gap-3">
+              <DemoBadge />
+              <Link
+                href="/"
+                className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-white transition-colors"
+              >
+                Ir al sitio web
+              </Link>
+              <button
+                onClick={cargarDatos}
+                className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
+              >
+                🔄 Actualizar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Estadísticas principales */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">Entidades Activas</p>
+                <p className="text-3xl font-bold text-gray-900">{stats.entidadesActivas}</p>
+                <p className="text-xs text-gray-500">de {stats.totalEntidades} totales</p>
+              </div>
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <span className="text-blue-600 text-xl">🏢</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">Delegados/as Activos/as</p>
+                <p className="text-3xl font-bold text-gray-900">{stats.delegadosActivos}</p>
+                <p className="text-xs text-gray-500">protegiendo menores</p>
+              </div>
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <span className="text-green-600 text-xl">👥</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">Ingresos Mensuales</p>
+                <p className="text-3xl font-bold text-gray-900">€{stats.ingresosMensuales.toFixed(0)}</p>
+                <p className="text-xs text-gray-500">facturación recurrente</p>
+              </div>
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <span className="text-purple-600 text-xl">💰</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-xl shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">Cumplimiento Promedio</p>
+                <p className={`text-3xl font-bold ${getCumplimientoColor(stats.cumplimientoPromedio)}`}>
+                  {stats.cumplimientoPromedio.toFixed(1)}%
+                </p>
+                <p className="text-xs text-gray-500">{stats.alertasTotales} alertas pendientes</p>
+              </div>
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                <span className="text-orange-600 text-xl">📊</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Widget Estado del Sistema */}
+        <SystemStatusWidget />
+
+        {/* Email & Entregabilidad */}
+        <EmailDeliverabilitySection />
+
+        {/* Mensaje de error */}
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <div className="flex">
+              <span className="text-red-600 text-xl mr-3">❌</span>
+              <div>
+                <h3 className="text-sm font-medium text-red-800">Error al cargar datos</h3>
+                <p className="text-sm text-red-700 mt-1">{error}</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tabla de entidades */}
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-lg font-bold text-gray-900">Entidades Registradas</h2>
+            <p className="text-sm text-gray-600">Gestión completa de organizaciones en Custodia360</p>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-white">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Entidad
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Plan
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Delegados
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Cumplimiento
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Estado
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Registro
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {entidades.map((entidad) => {
+                  const cumplimiento = entidad.cumplimiento?.[0]
+                  const delegadoPrincipal = entidad.delegados?.find(d => d.tipo === 'principal')
+                  const delegadoSuplente = entidad.delegados?.find(d => d.tipo === 'suplente')
+
+                  return (
+                    <tr key={entidad.id} className="hover:bg-white">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div>
+                          <div className="text-sm font-medium text-gray-900">{entidad.nombre}</div>
+                          <div className="text-sm text-gray-500">{entidad.cif}</div>
+                          <div className="text-xs text-gray-400">{entidad.numero_menores} menores</div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{entidad.plan}</div>
+                        <div className="text-sm text-gray-500">€{entidad.precio_mensual}/mes</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm">
+                          {delegadoPrincipal && (
+                            <div className="text-gray-900">
+                              👤 {delegadoPrincipal.nombre} {delegadoPrincipal.apellidos}
+                            </div>
+                          )}
+                          {delegadoSuplente && (
+                            <div className="text-gray-500 text-xs">
+                              🛡️ {delegadoSuplente.nombre} {delegadoSuplente.apellidos}
+                            </div>
+                          )}
+                          {!delegadoPrincipal && <span className="text-gray-400">Sin delegado</span>}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {cumplimiento ? (
+                          <div>
+                            <div className={`text-sm font-medium ${getCumplimientoColor(cumplimiento.porcentaje_cumplimiento)}`}>
+                              {cumplimiento.porcentaje_cumplimiento.toFixed(1)}%
+                            </div>
+                            {cumplimiento.alertas_pendientes.length > 0 && (
+                              <div className="text-xs text-red-600">
+                                ⚠️ {cumplimiento.alertas_pendientes.length} alertas
+                              </div>
+                            )}
+                            {cumplimiento.casos_activos > 0 && (
+                              <div className="text-xs text-orange-600">
+                                📋 {cumplimiento.casos_activos} casos activos
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <span className="text-gray-400">Sin datos</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getEstadoColor(entidad.estado)}`}>
+                          {entidad.estado}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {formatearFecha(entidad.created_at)}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+
+            {entidades.length === 0 && !loading && (
+              <div className="text-center py-12">
+                <span className="text-gray-400 text-4xl">🏢</span>
+                <h3 className="text-lg font-medium text-gray-900 mt-2">No hay entidades registradas</h3>
+                <p className="text-gray-500">Las entidades aparecerán aquí cuando se registren a través del formulario de contratación.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

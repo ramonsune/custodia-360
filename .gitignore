@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.next/
+out/
+output/
+.env.local
+.env.production
+.env.development
+*.log
+.DS_Store
+bun.lockb
+.vercel
+yarn.lock
+
+# Build outputs
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+
+# Railway/Deployment
+.railway/
+
+# Temporary files
+*.tmp
+*.temp
+.deploy-trigger*
+.deployment-trigger
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.staging
+.env.local.STRIPE_LIVE
+.env.local.STRIPE_LIVE_REAL
+
+# Scripts con claves sensibles
+scripts/activar-stripe-live.ts
+scripts/limpiar-y-configurar-precios-live.ts
+scripts/verificar-precios-stripe.ts
+.same/ACTIVAR_STRIPE_LIVE_AHORA.md
